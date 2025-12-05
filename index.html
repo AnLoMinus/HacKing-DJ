@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl" id="html-root">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HacKing-DJ 🎚️</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/modal.css">
+    <link rel="stylesheet" href="assets/css/mixingPanel.css">
+    <link rel="stylesheet" href="assets/css/shortcuts.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="header-top">
+                <h1 class="logo" data-i18n="app.title">⚡ HacKing-DJ</h1>
+                <div class="language-selector">
+                    <button class="lang-btn active" data-lang="he" title="עברית">ע</button>
+                    <button class="lang-btn" data-lang="en" title="English">EN</button>
+                    <button class="lang-btn" data-lang="ru" title="Русский">RU</button>
+                    <button class="lang-btn" data-lang="hi" title="हिन्दी">HI</button>
+                </div>
+            </div>
+            <p class="tagline" data-i18n="app.tagline">Electro-Kabbalah Cosmic Trap</p>
+        </header>
+
+        <!-- Progress Bar -->
+        <div class="progress-bar-container">
+            <div class="progress-bar-wrapper">
+                <canvas class="progress-waveform" id="progress-waveform-a"></canvas>
+                <div class="progress-info">
+                    <span class="progress-time" id="progress-time-a">0:00</span>
+                    <span class="progress-separator">/</span>
+                    <span class="progress-duration" id="progress-duration-a">0:00</span>
+                </div>
+            </div>
+            <div class="progress-bar-wrapper">
+                <canvas class="progress-waveform" id="progress-waveform-b"></canvas>
+                <div class="progress-info">
+                    <span class="progress-time" id="progress-time-b">0:00</span>
+                    <span class="progress-separator">/</span>
+                    <span class="progress-duration" id="progress-duration-b">0:00</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Deck A -->
+            <section class="deck deck-a" id="deck-a">
+                <div class="deck-header">
+                    <h2 data-i18n="deck.deckA">🎛️ Deck A</h2>
+                </div>
+                <div class="deck-controls">
+                    <button class="btn btn-load" id="load-a" data-i18n="deck.loadTrack">Load Track</button>
+                    <button class="btn btn-play" id="play-a" data-i18n="deck.play">▶ Play</button>
+                    <button class="btn btn-pause" id="pause-a" data-i18n="deck.pause">⏸ Pause</button>
+                    <button class="btn btn-cue" id="cue-a" data-i18n="deck.cue">Cue</button>
+                </div>
+                <div class="waveform-container">
+                    <canvas class="waveform" id="waveform-a"></canvas>
+                </div>
+                <div class="deck-sliders">
+                    <div class="slider-group">
+                        <label data-i18n="deck.volume">Volume</label>
+                        <input type="range" class="slider volume-slider" id="volume-a" min="0" max="100" value="75">
+                        <span class="slider-value" id="volume-value-a">75%</span>
+                    </div>
+                    <div class="slider-group">
+                        <label data-i18n="deck.pitch">Pitch</label>
+                        <input type="range" class="slider pitch-slider" id="pitch-a" min="-50" max="50" value="0">
+                        <span class="slider-value" id="pitch-value-a">0%</span>
+                    </div>
+                    <div class="slider-group">
+                        <label data-i18n="deck.bpm">BPM</label>
+                        <input type="number" class="bpm-input" id="bpm-a" min="60" max="200" value="120" step="0.1">
+                        <span class="bpm-display" id="bpm-display-a">120 BPM</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Mixer -->
+            <section class="mixer" id="mixer">
+                <div class="mixer-header">
+                    <h2 data-i18n="mixer.title">🎚️ Mixer</h2>
+                </div>
+                <div class="crossfader-container">
+                    <label data-i18n="mixer.crossfader">Crossfader</label>
+                    <input type="range" class="slider crossfader" id="crossfader" min="0" max="100" value="50">
+                </div>
+                <div class="eq-container">
+                    <div class="eq-band">
+                        <label data-i18n="mixer.low">Low</label>
+                        <input type="range" class="slider eq-slider" id="eq-low-a" min="-12" max="12" value="0">
+                    </div>
+                    <div class="eq-band">
+                        <label data-i18n="mixer.mid">Mid</label>
+                        <input type="range" class="slider eq-slider" id="eq-mid-a" min="-12" max="12" value="0">
+                    </div>
+                    <div class="eq-band">
+                        <label data-i18n="mixer.high">High</label>
+                        <input type="range" class="slider eq-slider" id="eq-high-a" min="-12" max="12" value="0">
+                    </div>
+                </div>
+                <div class="master-volume">
+                    <label data-i18n="mixer.masterVolume">Master Volume</label>
+                    <input type="range" class="slider master-slider" id="master-volume" min="0" max="100" value="80">
+                </div>
+            </section>
+
+            <!-- Deck B -->
+            <section class="deck deck-b" id="deck-b">
+                <div class="deck-header">
+                    <h2 data-i18n="deck.deckB">🎛️ Deck B</h2>
+                </div>
+                <div class="deck-controls">
+                    <button class="btn btn-load" id="load-b" data-i18n="deck.loadTrack">Load Track</button>
+                    <button class="btn btn-play" id="play-b" data-i18n="deck.play">▶ Play</button>
+                    <button class="btn btn-pause" id="pause-b" data-i18n="deck.pause">⏸ Pause</button>
+                    <button class="btn btn-cue" id="cue-b" data-i18n="deck.cue">Cue</button>
+                </div>
+                <div class="waveform-container">
+                    <canvas class="waveform" id="waveform-b"></canvas>
+                </div>
+                <div class="deck-sliders">
+                    <div class="slider-group">
+                        <label data-i18n="deck.volume">Volume</label>
+                        <input type="range" class="slider volume-slider" id="volume-b" min="0" max="100" value="75">
+                        <span class="slider-value" id="volume-value-b">75%</span>
+                    </div>
+                    <div class="slider-group">
+                        <label data-i18n="deck.pitch">Pitch</label>
+                        <input type="range" class="slider pitch-slider" id="pitch-b" min="-50" max="50" value="0">
+                        <span class="slider-value" id="pitch-value-b">0%</span>
+                    </div>
+                    <div class="slider-group">
+                        <label data-i18n="deck.bpm">BPM</label>
+                        <input type="number" class="bpm-input" id="bpm-b" min="60" max="200" value="120" step="0.1">
+                        <span class="bpm-display" id="bpm-display-b">120 BPM</span>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Playlist Section -->
+        <section class="playlist-section">
+            <div class="playlist-header">
+                <h2 data-i18n="playlist.title">📜 Playlist</h2>
+                <button class="btn btn-add" id="add-track" data-i18n="playlist.addTrack">+ Add Track</button>
+            </div>
+            <div class="playlist-container" id="playlist">
+                <p class="empty-playlist" data-i18n="playlist.empty">אין טראקים עדיין. לחץ על "Add Track" כדי להוסיף.
+                </p>
+            </div>
+        </section>
+    </div>
+
+    <!-- Keyboard Shortcuts Hint -->
+    <div class="shortcuts-hint" id="shortcuts-hint">
+        <span data-i18n="shortcuts.hint">לחץ <kbd>?</kbd> או <kbd>H</kbd> לקיצורי מקלדת</span>
+    </div>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3 data-i18n="footer.project">פרויקט</h3>
+                <ul>
+                    <li><a href="https://github.com/AnLoMinus/HacKing-DJ" target="_blank" rel="noopener noreferrer"
+                            data-i18n="footer.github">GitHub</a></li>
+                    <li><a href="https://www.youtube.com/@HacKing-DJ" target="_blank" rel="noopener noreferrer"
+                            data-i18n="footer.youtube">YouTube</a></li>
+                    <li><a href="README.md" data-i18n="footer.documentation">תיעוד</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3 data-i18n="footer.resources">משאבים</h3>
+                <ul>
+                    <li><a href="ROADMAP.md" data-i18n="footer.roadmap">מפת דרכים</a></li>
+                    <li><a href="FEATURES.md" data-i18n="footer.features">תכונות</a></li>
+                    <li><a href="docs/TRANSLATION.md" data-i18n="footer.translation">תרגום</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3 data-i18n="footer.community">קהילה</h3>
+                <ul>
+                    <li><a href="CONTRIBUTING.md" data-i18n="footer.contributing">תרומה</a></li>
+                    <li><a href="CONTRIBUTORS.md" data-i18n="footer.contributors">תורמים</a></li>
+                    <li><a href="SPONSORS.md" data-i18n="footer.sponsors">תומכים</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3 data-i18n="footer.legal">משפטי</h3>
+                <ul>
+                    <li><a href="LICENSE" data-i18n="footer.license">רישיון</a></li>
+                    <li><a href="SECURITY.md" data-i18n="footer.security">אבטחה</a></li>
+                    <li><a href="CODE_OF_CONDUCT.md" data-i18n="footer.codeOfConduct">קוד התנהגות</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-credits">
+            <h3 data-i18n="footer.credits">קרדיטים</h3>
+            <div class="credits-links">
+                <a href="https://github.com/AnLoMinus/HacKing-DJ" target="_blank" rel="noopener noreferrer"
+                    class="credit-link">
+                    <span class="credit-icon">📦</span>
+                    <span>GitHub Repository</span>
+                </a>
+                <a href="https://anlominus.github.io/HacKing-DJ/" target="_blank" rel="noopener noreferrer"
+                    class="credit-link">
+                    <span class="credit-icon">🌐</span>
+                    <span>Live Demo</span>
+                </a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 <span data-i18n="footer.copyright">AnLoMinus (Leon Yaakobov)</span>. <span
+                    data-i18n="footer.rights">כל הזכויות שמורות</span>.</p>
+            <p class="footer-tagline" data-i18n="footer.tagline">SparKing Ascension • Electro-Kabbalah Cosmic Trap</p>
+        </div>
+    </footer>
+
+    <!-- Hidden file input -->
+    <input type="file" id="file-input" accept="audio/*" style="display: none;" multiple>
+
+    <!-- Scripts -->
+    <script src="assets/js/i18n.js"></script>
+    <script src="assets/js/markdownRenderer.js"></script>
+    <script src="assets/js/keyboardShortcuts.js"></script>
+    <script src="assets/js/audioEngine.js"></script>
+    <script src="assets/js/decks.js"></script>
+    <script src="assets/js/mixer.js"></script>
+    <script src="assets/js/ui.js"></script>
+    <script src="assets/js/chakras.js"></script>
+    <script src="assets/js/mixingPanel.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>

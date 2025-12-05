@@ -1,0 +1,41 @@
+Backup Manifest
+================
+Date: Fri Dec  5 17:54:57 IST 2025
+Backup Name: HacKing-DJ_Backup_20251205_175456
+
+Files:
+./.gitignore
+./AUTHORS.md
+./CHANGELOG.md
+./CODE_OF_CONDUCT.md
+./CONTRIBUTING.md
+./CONTRIBUTORS.md
+./FEATURES.md
+./HacKing-DJ Logo Design.png
+./LICENSE
+./Neon HacKing-DJ Logo Design.png
+./README.md
+./ROADMAP.md
+./SECURITY.md
+./SPONSORS.md
+./assets/css/mixingPanel.css
+./assets/css/modal.css
+./assets/css/shortcuts.css
+./assets/css/style.css
+./assets/i18n/en.json
+./assets/i18n/he.json
+./assets/i18n/hi.json
+./assets/i18n/ru.json
+./assets/js/audioEngine.js
+./assets/js/chakras.js
+./assets/js/decks.js
+./assets/js/i18n.js
+./assets/js/keyboardShortcuts.js
+./assets/js/main.js
+./assets/js/markdownRenderer.js
+./assets/js/mixer.js
+./assets/js/mixingPanel.js
+./assets/js/ui.js
+./backup.sh
+./docs/TRANSLATION.md
+./index.html

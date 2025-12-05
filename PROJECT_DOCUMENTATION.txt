@@ -1,0 +1,208 @@
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                    HacKing-DJ - Project Documentation                        ║
+║                         Full Project Snapshot                                 ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+Backup Date: Fri Dec  5 17:54:56 IST 2025
+Backup Name: HacKing-DJ_Backup_20251205_175456
+
+═══════════════════════════════════════════════════════════════════════════
+📁 PROJECT STRUCTURE
+═══════════════════════════════════════════════════════════════════════════
+
+./.gitignore
+./AUTHORS.md
+./CHANGELOG.md
+./CODE_OF_CONDUCT.md
+./CONTRIBUTING.md
+./CONTRIBUTORS.md
+./FEATURES.md
+./HacKing-DJ Logo Design.png
+./LICENSE
+./Neon HacKing-DJ Logo Design.png
+./README.md
+./ROADMAP.md
+./SECURITY.md
+./SPONSORS.md
+./assets/css/mixingPanel.css
+./assets/css/modal.css
+./assets/css/shortcuts.css
+./assets/css/style.css
+./assets/i18n/en.json
+./assets/i18n/he.json
+./assets/i18n/hi.json
+./assets/i18n/ru.json
+./assets/js/audioEngine.js
+./assets/js/chakras.js
+./assets/js/decks.js
+./assets/js/i18n.js
+./assets/js/keyboardShortcuts.js
+./assets/js/main.js
+./assets/js/markdownRenderer.js
+./assets/js/mixer.js
+./assets/js/mixingPanel.js
+./assets/js/ui.js
+./backup.sh
+./docs/TRANSLATION.md
+./index.html
+
+═══════════════════════════════════════════════════════════════════════════
+📊 FILE STATISTICS
+═══════════════════════════════════════════════════════════════════════════
+
+Total Files: 35
+Total Directories: 7
+
+File Types:
+  HTML: 1
+  CSS: 4
+  JavaScript: 10
+  JSON: 4
+  Markdown: 11
+
+═══════════════════════════════════════════════════════════════════════════
+✨ FEATURES
+═══════════════════════════════════════════════════════════════════════════
+
+✅ Dual Deck System (A/B)
+✅ Professional Mixer with Crossfader
+✅ EQ Controls (Low/Mid/High)
+✅ Waveform Visualization (Interactive)
+✅ Progress Bars (Top & Deck)
+✅ Playlist Management
+✅ Multi-language Support (4 languages: Hebrew, English, Russian, Hindi)
+✅ Keyboard Shortcuts System
+✅ Markdown Document Renderer
+✅ Mixing Panel with Chakras System
+✅ BPM Control
+✅ Pitch Control
+✅ Volume Control
+✅ Master Volume
+✅ Cue Points
+✅ Real-time Audio Processing
+✅ Responsive Design
+✅ SparKing Ascension Style Design
+
+
+═══════════════════════════════════════════════════════════════════════════
+🌍 LANGUAGES SUPPORTED
+═══════════════════════════════════════════════════════════════════════════
+
+  🇮🇱 Hebrew (he) - Default
+  🇬🇧 English (en)
+  🇷🇺 Russian (ru)
+  🇮🇳 Hindi (hi)
+
+═══════════════════════════════════════════════════════════════════════════
+📄 KEY FILES
+═══════════════════════════════════════════════════════════════════════════
+
+Main Files:
+  - index.html (Main application page)
+  - README.md (Project documentation)
+  - LICENSE (MIT License)
+
+JavaScript Modules:
+  - assets/js/main.js (Entry point)
+  - assets/js/i18n.js (Internationalization)
+  - assets/js/audioEngine.js (Audio processing engine)
+  - assets/js/decks.js (Deck management)
+  - assets/js/mixer.js (Mixer controls)
+  - assets/js/ui.js (User interface)
+  - assets/js/chakras.js (Chakras system)
+  - assets/js/mixingPanel.js (Mixing panel)
+  - assets/js/keyboardShortcuts.js (Keyboard shortcuts)
+  - assets/js/markdownRenderer.js (Document renderer)
+
+CSS Files:
+  - assets/css/style.css (Main styles)
+  - assets/css/modal.css (Modal styles)
+  - assets/css/mixingPanel.css (Mixing panel styles)
+  - assets/css/shortcuts.css (Shortcuts modal styles)
+
+Translation Files:
+  - assets/i18n/he.json (Hebrew)
+  - assets/i18n/en.json (English)
+  - assets/i18n/ru.json (Russian)
+  - assets/i18n/hi.json (Hindi)
+
+Documentation:
+  - CHANGELOG.md
+  - ROADMAP.md
+  - FEATURES.md
+  - CONTRIBUTING.md
+  - CONTRIBUTORS.md
+  - AUTHORS.md
+  - SPONSORS.md
+  - SECURITY.md
+  - CODE_OF_CONDUCT.md
+  - docs/TRANSLATION.md
+
+
+═══════════════════════════════════════════════════════════════════════════
+🔐 FILE CHECKSUMS (MD5)
+═══════════════════════════════════════════════════════════════════════════
+
+4e8708cb402317791a08e4e740090e16  ./CODE_OF_CONDUCT.md
+fba3009994ef1ec48925999c1775c22c  ./AUTHORS.md
+f4c80addfb5ffe0fff3b222eefc92041  ./index.html
+60cc83be5d212ea4cd7f523611061094  ./LICENSE
+3d6ebf832449a0914b55463863592704  ./CHANGELOG.md
+19faa900047d08a73ad2d5a889d2a7cc  ./HacKing-DJ Logo Design.png
+4cc029e7cf9b18bcdfef7a03b9b70265  ./docs/TRANSLATION.md
+cf0172a1797d4a9991ba0db770b13b7a  ./README.md
+b28d0291fb66309d09a61614211ca1a5  ./backup.sh
+c24f783501b38696cf1cefbae364ba9c  ./ROADMAP.md
+1af25a75aba6a53da5ebd9db9f33b880  ./.gitignore
+c0584df0a0b70607da095baa65bd9ed3  ./Neon HacKing-DJ Logo Design.png
+472630427341d99944db6cfee2e0bed0  ./CONTRIBUTORS.md
+d60d87fb5f311843ff5559144ea45fbb  ./CONTRIBUTING.md
+bb956d6c96b6d0aa5e20c9d60e43881b  ./FEATURES.md
+1a0528c0774a3eb56a34a2c22dc38613  ./assets/css/mixingPanel.css
+1c93d9373c9b045ab9c100ff76452188  ./assets/css/shortcuts.css
+e3fc711d21c5e11396467d31915f7c87  ./assets/css/style.css
+3945fb7f1c62be12f0c768c22de01a6e  ./assets/css/modal.css
+60d561bfe3b3b6ae7800f063aa927c10  ./assets/js/chakras.js
+d81895235d02e7f6b2943c0f5d863fbc  ./assets/js/ui.js
+c2bd713674a25d85c7d38a1784251303  ./assets/js/keyboardShortcuts.js
+fe9488a639a3255874de790f1a1744e0  ./assets/js/markdownRenderer.js
+3c82fa07b70347865faa00d192c063d7  ./assets/js/mixer.js
+55ccbd5934e978c544259b754d36e65d  ./assets/js/main.js
+0bb96350624bd0bb293f92ee4e29e423  ./assets/js/decks.js
+09a35470274850e2c98968a851dc52ef  ./assets/js/audioEngine.js
+658c8468285e96e661355b11dc37b7d5  ./assets/js/mixingPanel.js
+ddbbd5c2a3e47154d755dc65ffec54a7  ./assets/js/i18n.js
+d9ec24d81f74c60942f496752d5c3c57  ./assets/i18n/ru.json
+315566630a166d4dfe71f930edde7552  ./assets/i18n/en.json
+1c98381f1396e68a9b566e6ca6b78bb5  ./assets/i18n/hi.json
+174a703c68f5c68da8ec2a7f5408c3f7  ./assets/i18n/he.json
+beef2e47286bc4088b588b67d122c118  ./SPONSORS.md
+85c0331af9a1d8a6c431efd1d6db5b24  ./SECURITY.md
+
+═══════════════════════════════════════════════════════════════════════════
+📋 RESTORATION INSTRUCTIONS
+═══════════════════════════════════════════════════════════════════════════
+
+To restore this backup:
+
+1. Navigate to the project directory:
+   cd /path/to/HacKing-DJ
+
+2. Copy all files from backup:
+   cp -r ${BACKUP_NAME}/* .
+
+3. Or restore specific files:
+   cp ${BACKUP_NAME}/path/to/file ./path/to/file
+
+4. Verify files are restored correctly
+
+Note: This backup does not include:
+  - node_modules (if exists)
+  - .git directory
+  - Log files
+  - Temporary files
+
+
+═══════════════════════════════════════════════════════════════════════════
+End of Documentation
+═══════════════════════════════════════════════════════════════════════════
