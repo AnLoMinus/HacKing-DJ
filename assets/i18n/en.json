@@ -1,0 +1,75 @@
+{
+  "app": {
+    "title": "HacKing-DJ",
+    "tagline": "Electro-Kabbalah Cosmic Trap"
+  },
+  "deck": {
+    "deckA": "Deck A",
+    "deckB": "Deck B",
+    "loadTrack": "Load Track",
+    "play": "▶ Play",
+    "pause": "⏸ Pause",
+    "cue": "Cue",
+    "volume": "Volume",
+    "pitch": "Pitch",
+    "bpm": "BPM"
+  },
+  "mixer": {
+    "title": "Mixer",
+    "crossfader": "Crossfader",
+    "low": "Low",
+    "mid": "Mid",
+    "high": "High",
+    "masterVolume": "Master Volume"
+  },
+  "playlist": {
+    "title": "Playlist",
+    "addTrack": "+ Add Track",
+    "empty": "No tracks yet. Click \"Add Track\" to add.",
+    "loadToA": "Load to A",
+    "loadToB": "Load to B",
+    "noTrackLoaded": "Please load a track first"
+  },
+  "common": {
+    "language": "Language",
+    "hebrew": "עברית",
+    "english": "English",
+    "russian": "Русский",
+    "hindi": "हिन्दी"
+  },
+  "footer": {
+    "project": "Project",
+    "github": "GitHub",
+    "youtube": "YouTube",
+    "documentation": "Documentation",
+    "resources": "Resources",
+    "roadmap": "Roadmap",
+    "features": "Features",
+    "translation": "Translation",
+    "community": "Community",
+    "contributing": "Contributing",
+    "contributors": "Contributors",
+    "sponsors": "Sponsors",
+    "legal": "Legal",
+    "license": "License",
+    "security": "Security",
+    "codeOfConduct": "Code of Conduct",
+    "copyright": "AnLoMinus (Leon Yaakobov)",
+    "rights": "All rights reserved",
+    "tagline": "SparKing Ascension • Electro-Kabbalah Cosmic Trap",
+    "credits": "Credits"
+  },
+  "mixing": {
+    "title": "🎛️ Mixing & Effects Panel",
+    "chakras": "Chakras",
+    "effects": "Effects",
+    "presets": "Presets",
+    "activate": "Activate",
+    "comingSoon": "Coming soon..."
+  },
+  "shortcuts": {
+    "title": "⌨️ Keyboard Shortcuts",
+    "hint": "Press ? or H for keyboard shortcuts"
+  }
+}
+

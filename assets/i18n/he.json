@@ -1,0 +1,75 @@
+{
+  "app": {
+    "title": "HacKing-DJ",
+    "tagline": "Electro-Kabbalah Cosmic Trap"
+  },
+  "deck": {
+    "deckA": "דק A",
+    "deckB": "דק B",
+    "loadTrack": "טען טראק",
+    "play": "▶ נגן",
+    "pause": "⏸ עצור",
+    "cue": "Cue",
+    "volume": "ווליום",
+    "pitch": "Pitch",
+    "bpm": "BPM"
+  },
+  "mixer": {
+    "title": "מיקסר",
+    "crossfader": "Crossfader",
+    "low": "Low",
+    "mid": "Mid",
+    "high": "High",
+    "masterVolume": "Master Volume"
+  },
+  "playlist": {
+    "title": "פלייליסט",
+    "addTrack": "+ הוסף טראק",
+    "empty": "אין טראקים עדיין. לחץ על \"הוסף טראק\" כדי להוסיף.",
+    "loadToA": "טען ל-A",
+    "loadToB": "טען ל-B",
+    "noTrackLoaded": "אנא טען טראק קודם"
+  },
+  "common": {
+    "language": "שפה",
+    "hebrew": "עברית",
+    "english": "English",
+    "russian": "Русский",
+    "hindi": "हिन्दी"
+  },
+  "footer": {
+    "project": "פרויקט",
+    "github": "GitHub",
+    "youtube": "YouTube",
+    "documentation": "תיעוד",
+    "resources": "משאבים",
+    "roadmap": "מפת דרכים",
+    "features": "תכונות",
+    "translation": "תרגום",
+    "community": "קהילה",
+    "contributing": "תרומה",
+    "contributors": "תורמים",
+    "sponsors": "תומכים",
+    "legal": "משפטי",
+    "license": "רישיון",
+    "security": "אבטחה",
+    "codeOfConduct": "קוד התנהגות",
+    "credits": "קרדיטים",
+    "copyright": "AnLoMinus (Leon Yaakobov)",
+    "rights": "כל הזכויות שמורות",
+    "tagline": "SparKing Ascension • Electro-Kabbalah Cosmic Trap"
+  },
+  "mixing": {
+    "title": "🎛️ פאנל מיקסינג ואפקטים",
+    "chakras": "צ'אקרות",
+    "effects": "אפקטים",
+    "presets": "סטים מוכנים",
+    "activate": "הפעל",
+    "comingSoon": "בקרוב..."
+  },
+  "shortcuts": {
+    "title": "⌨️ קיצורי מקלדת",
+    "hint": "לחץ ? או H לקיצורי מקלדת"
+  }
+}
+
