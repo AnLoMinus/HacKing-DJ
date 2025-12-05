@@ -5,6 +5,17 @@
 [![GitHub](https://img.shields.io/badge/GitHub-HacKing--DJ-blue?logo=github)](https://github.com/AnLoMinus/HacKing-DJ)
 [![YouTube](https://img.shields.io/badge/YouTube-HacKing--DJ-red?logo=youtube)](https://www.youtube.com/@HacKing-DJ)
 
+
+<img width="1024" height="1024" alt="Titan DJ Energy Circuit" src="https://github.com/user-attachments/assets/eb8c5e40-1efc-45f3-981c-493bb79694bc" />
+
+<img width="1440" height="778" alt="image" src="https://github.com/user-attachments/assets/4bb60bac-aa0b-470c-96b7-20a1a722036f" />
+
+<img width="1536" height="1024" alt="Titan of Sound and Lightning" src="https://github.com/user-attachments/assets/bfca9aa5-0cd4-4753-8720-8c034aa694b1" />
+
+<img width="1024" height="1024" alt="HacKing-DJ Logo Design" src="https://github.com/user-attachments/assets/77355a1d-a1d0-4abd-945f-7a8001087577" />
+
+<img width="1024" height="1024" alt="Neon HacKing-DJ Logo Design" src="https://github.com/user-attachments/assets/3d112fad-1255-48c0-97a7-e7bb4952e8d1" />
+
 ---
 
 ## ⚡ מה זה?
