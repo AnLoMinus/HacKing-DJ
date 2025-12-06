@@ -18,7 +18,11 @@ class AudioEngine {
                 isPlaying: false,
                 position: 0,
                 startTime: 0,
-                bpm: null,
+                bpm: 120,
+                baseBpm: 120,
+                pitchPercent: 0,
+                playbackRate: 1,
+                startOffset: 0,
                 loop: { enabled: false, start: 0, end: 0 }
             },
             B: {
@@ -32,7 +36,11 @@ class AudioEngine {
                 isPlaying: false,
                 position: 0,
                 startTime: 0,
-                bpm: null,
+                bpm: 120,
+                baseBpm: 120,
+                pitchPercent: 0,
+                playbackRate: 1,
+                startOffset: 0,
                 loop: { enabled: false, start: 0, end: 0 }
             }
         };
@@ -114,10 +122,11 @@ class AudioEngine {
         try {
             const arrayBuffer = await file.arrayBuffer();
             const audioBuffer = await this.audioContext.decodeAudioData(arrayBuffer);
-            
+
             this.decks[deckId].buffer = audioBuffer;
             this.decks[deckId].position = 0;
-            
+            this.decks[deckId].startOffset = 0;
+
             console.log(`✅ Track loaded to Deck ${deckId}:`, file.name);
             return audioBuffer;
         } catch (error) {
@@ -145,15 +154,17 @@ class AudioEngine {
         // יצירת source חדש
         deck.source = this.audioContext.createBufferSource();
         deck.source.buffer = deck.buffer;
-        deck.source.playbackRate.value = 1.0;
-        
+        deck.playbackRate = this.getPlaybackRate(deckId);
+        deck.source.playbackRate.value = deck.playbackRate;
+
         // חיבור ל-Gain Node
         deck.source.connect(deck.gainNode);
-        
+
         // התחלת נגינה
         const offset = deck.position;
+        deck.startOffset = offset;
         deck.source.start(0, offset);
-        deck.startTime = this.audioContext.currentTime - offset;
+        deck.startTime = this.audioContext.currentTime;
         deck.isPlaying = true;
 
         // טיפול בסיום
@@ -161,6 +172,7 @@ class AudioEngine {
             if (!deck.loop.enabled) {
                 deck.isPlaying = false;
                 deck.position = 0;
+                deck.startOffset = 0;
             }
         };
         
@@ -176,15 +188,16 @@ class AudioEngine {
     startPositionUpdate(deckId) {
         const deck = this.decks[deckId];
         if (!deck.isPlaying) return;
-        
+
         const updateInterval = setInterval(() => {
             if (!deck.isPlaying) {
                 clearInterval(updateInterval);
                 return;
             }
-            
-            deck.position = this.audioContext.currentTime - deck.startTime;
-            
+
+            const elapsed = this.audioContext.currentTime - deck.startTime;
+            deck.position = deck.startOffset + (elapsed * deck.playbackRate);
+
             // עדכון UI
             this.updateProgressUI(deckId);
             
@@ -203,9 +216,9 @@ class AudioEngine {
     updateProgressUI(deckId) {
         const deck = this.decks[deckId];
         if (!deck.buffer) return;
-        
-        const currentTime = deck.position;
+
         const duration = deck.buffer.duration;
+        const currentTime = Math.min(deck.position, duration);
         
         // עדכון זמן
         const timeElement = document.getElementById(`progress-time-${deckId.toLowerCase()}`);
@@ -308,17 +321,19 @@ class AudioEngine {
      */
     pause(deckId) {
         const deck = this.decks[deckId];
-        
+
         if (!deck.isPlaying || !deck.source) return;
 
         // שמירת מיקום נוכחי
-        deck.position = this.audioContext.currentTime - deck.startTime;
-        
+        const elapsed = this.audioContext.currentTime - deck.startTime;
+        deck.position = deck.startOffset + (elapsed * deck.playbackRate);
+
         // עצירת source
         deck.source.stop();
         deck.source.disconnect();
         deck.source = null;
         deck.isPlaying = false;
+        deck.startOffset = deck.position;
 
         console.log(`⏸️ Deck ${deckId} paused at ${deck.position.toFixed(2)}s`);
     }
@@ -347,11 +362,8 @@ class AudioEngine {
      */
     setPitch(deckId, value) {
         const deck = this.decks[deckId];
-        if (deck.source) {
-            // המרת אחוזים ל-playbackRate
-            const rate = 1 + (value / 100);
-            deck.source.playbackRate.value = rate;
-        }
+        deck.pitchPercent = Number(value) || 0;
+        this.applyPlaybackRate(deckId);
     }
 
     /**
@@ -398,6 +410,45 @@ class AudioEngine {
             frequencyData: dataArray,
             bufferLength: bufferLength
         };
+    }
+
+    /**
+     * חישוב playbackRate משולב של BPM + Pitch
+     */
+    getPlaybackRate(deckId) {
+        const deck = this.decks[deckId];
+        const tempoFactor = deck.bpm && deck.baseBpm ? deck.bpm / deck.baseBpm : 1;
+        const pitchFactor = 1 + (deck.pitchPercent / 100);
+        const rate = tempoFactor * pitchFactor;
+
+        // מניעת ערכים לא תקינים
+        if (!isFinite(rate) || rate <= 0) {
+            return 1;
+        }
+
+        // הגבלת קצוות למניעת ארטיפקטים
+        return Math.min(Math.max(rate, 0.25), 4);
+    }
+
+    /**
+     * החלת playbackRate בזמן אמת
+     */
+    applyPlaybackRate(deckId) {
+        const deck = this.decks[deckId];
+        if (!deck) return;
+
+        const newRate = this.getPlaybackRate(deckId);
+
+        if (deck.isPlaying && deck.source) {
+            // חישוב מיקום נוכחי לפי הקצב הישן, ואז ריסטרט שעון לחישוב מדויק
+            const elapsed = this.audioContext.currentTime - deck.startTime;
+            deck.position = deck.startOffset + (elapsed * deck.playbackRate);
+            deck.startOffset = deck.position;
+            deck.startTime = this.audioContext.currentTime;
+            deck.source.playbackRate.value = newRate;
+        }
+
+        deck.playbackRate = newRate;
     }
 }
 

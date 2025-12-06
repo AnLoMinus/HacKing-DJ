@@ -77,14 +77,23 @@ class DeckManager {
             bpmInput.addEventListener('input', (e) => {
                 const bpm = parseFloat(e.target.value);
                 const deck = audioEngine.decks[deckId];
-                deck.bpm = bpm;
-                
+                const resolvedBpm = Number.isFinite(bpm) ? bpm : deck.baseBpm;
+                deck.bpm = resolvedBpm;
+                audioEngine.applyPlaybackRate(deckId);
+
                 // עדכון תצוגה
                 const bpmDisplay = document.getElementById(`bpm-display-${deckId.toLowerCase()}`);
                 if (bpmDisplay) {
-                    bpmDisplay.textContent = `${bpm.toFixed(1)} BPM`;
+                    bpmDisplay.textContent = `${resolvedBpm.toFixed(1)} BPM`;
                 }
             });
+
+            // שמירת BPM בסיסי עם ערך התחלתי מה-UI
+            const initialBpm = parseFloat(bpmInput.value) || 120;
+            const deck = audioEngine.decks[deckId];
+            deck.bpm = initialBpm;
+            deck.baseBpm = initialBpm;
+            deck.playbackRate = audioEngine.getPlaybackRate(deckId);
         }
 
         console.log(`✅ Deck ${deckId} initialized`);
