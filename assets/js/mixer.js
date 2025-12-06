@@ -164,20 +164,6 @@ class MixerManager {
     }
 
     /**
-     * החלת פרופיל EQ מתצורה מוגדרת (למשל מצ'אקרות)
-     */
-    applyEqProfile(deckId, profile) {
-        ['low', 'mid', 'high'].forEach(band => {
-            const value = typeof profile[band] === 'number' ? profile[band] : 0;
-            const slider = document.getElementById(`eq-${band}-${deckId.toLowerCase()}`);
-            if (slider) {
-                slider.value = value;
-            }
-            audioEngine.setEQ(deckId, band, value);
-        });
-    }
-
-    /**
      * עדכון תצוגת Crossfader
      */
     updateCrossfaderReadout(value, volumeA = 100, volumeB = 100) {
