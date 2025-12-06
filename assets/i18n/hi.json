@@ -11,15 +11,32 @@
     "pause": "⏸ रोकें",
     "cue": "Cue",
     "volume": "वॉल्यूम",
-    "pitch": "पिच"
+    "pitch": "पिच",
+    "bpm": "BPM",
+    "sync": "BPM सिंक",
+    "loop": "8s लूप",
+    "restart": "फिर से शुरू",
+    "stop": "रोकें",
+    "nudgeBack": "⏪ -2s नज",
+    "nudgeForward": "+2s नज ⏩",
+    "syncError": "दूसरे डेक पर कोई सक्रिय ट्रैक नहीं"
   },
   "mixer": {
     "title": "मिक्सर",
     "crossfader": "क्रॉसफेडर",
+    "crossfaderCentered": "मध्य",
+    "crossfaderLeft": "A की ओर",
+    "crossfaderCenter": "केंद्र",
+    "crossfaderRight": "B की ओर",
     "low": "निम्न",
     "mid": "मध्य",
     "high": "उच्च",
-    "masterVolume": "मास्टर वॉल्यूम"
+    "masterVolume": "मास्टर वॉल्यूम",
+    "subtitle": "दोनों डेक के बीच सटीक ब्लेंड और टोन नियंत्रण.",
+    "eqReset": "EQ रीसेट",
+    "levelMeters": "लेवल मीटर्स",
+    "levelHint": "मिक्स करते समय हेडरूम पर नज़र रखें.",
+    "masterMeter": "मास्टर"
   },
   "playlist": {
     "title": "प्लेलिस्ट",
@@ -64,7 +81,9 @@
     "effects": "इफेक्ट्स",
     "presets": "प्रीसेट",
     "activate": "सक्रिय करें",
-    "comingSoon": "जल्द ही..."
+    "comingSoon": "जल्द ही...",
+    "targetDeck": "किस डेक पर लागू करें:",
+    "noChakra": "अभी तक कोई चक्र चयनित नहीं"
   },
   "shortcuts": {
     "title": "⌨️ कीबोर्ड शॉर्टकट",

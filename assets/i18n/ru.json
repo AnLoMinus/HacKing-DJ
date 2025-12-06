@@ -11,15 +11,32 @@
     "pause": "⏸ Пауза",
     "cue": "Cue",
     "volume": "Громкость",
-    "pitch": "Тон"
+    "pitch": "Тон",
+    "bpm": "BPM",
+    "sync": "Синхронизировать BPM",
+    "loop": "Цикл 8с",
+    "restart": "Перезапуск",
+    "stop": "Стоп",
+    "nudgeBack": "⏪ -2с сдвиг",
+    "nudgeForward": "+2с сдвиг ⏩",
+    "syncError": "Нет активного трека на другой деке"
   },
   "mixer": {
     "title": "Микшер",
     "crossfader": "Кроссфейдер",
+    "crossfaderCentered": "По центру",
+    "crossfaderLeft": "Сдвиг к A",
+    "crossfaderCenter": "Центр",
+    "crossfaderRight": "Сдвиг к B",
     "low": "Низкие",
     "mid": "Средние",
     "high": "Высокие",
-    "masterVolume": "Общая громкость"
+    "masterVolume": "Общая громкость",
+    "subtitle": "Точный контроль баланса и тона между деками.",
+    "eqReset": "Сбросить EQ",
+    "levelMeters": "Измерители уровня",
+    "levelHint": "Следите за запасом по громкости во время микса.",
+    "masterMeter": "Мастер"
   },
   "playlist": {
     "title": "Плейлист",
@@ -64,7 +81,9 @@
     "effects": "Эффекты",
     "presets": "Пресеты",
     "activate": "Активировать",
-    "comingSoon": "Скоро..."
+    "comingSoon": "Скоро...",
+    "targetDeck": "Применить к деке:",
+    "noChakra": "Чакра еще не выбрана"
   },
   "shortcuts": {
     "title": "⌨️ Горячие клавиши",

@@ -12,15 +12,31 @@
     "cue": "Cue",
     "volume": "Volume",
     "pitch": "Pitch",
-    "bpm": "BPM"
+    "bpm": "BPM",
+    "sync": "Sync BPM",
+    "loop": "Loop 8s",
+    "restart": "Restart",
+    "stop": "Stop",
+    "nudgeBack": "⏪ Nudge -2s",
+    "nudgeForward": "Nudge +2s ⏩",
+    "syncError": "No active track on the other deck to sync"
   },
   "mixer": {
     "title": "Mixer",
     "crossfader": "Crossfader",
+    "crossfaderCentered": "Centered",
+    "crossfaderLeft": "Bias A",
+    "crossfaderCenter": "Center",
+    "crossfaderRight": "Bias B",
     "low": "Low",
     "mid": "Mid",
     "high": "High",
-    "masterVolume": "Master Volume"
+    "masterVolume": "Master Volume",
+    "subtitle": "Precision blend & tone control between both decks.",
+    "eqReset": "Reset EQ",
+    "levelMeters": "Level meters",
+    "levelHint": "Watch for headroom while blending.",
+    "masterMeter": "Master"
   },
   "playlist": {
     "title": "Playlist",
@@ -65,7 +81,9 @@
     "effects": "Effects",
     "presets": "Presets",
     "activate": "Activate",
-    "comingSoon": "Coming soon..."
+    "comingSoon": "Coming soon...",
+    "targetDeck": "Apply to deck:",
+    "noChakra": "No chakra selected yet"
   },
   "shortcuts": {
     "title": "⌨️ Keyboard Shortcuts",

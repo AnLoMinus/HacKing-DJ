@@ -107,6 +107,7 @@ class ChakraSystem {
         };
         
         this.activeChakra = null;
+        this.activeDeck = 'A';
     }
 
     /**
@@ -117,14 +118,19 @@ class ChakraSystem {
         if (!chakra) return;
 
         this.activeChakra = chakraId;
+        this.activeDeck = deckId;
 
         // החלת אפקטים על הדק
         const effects = chakra.effects;
-        
+
         // עדכון EQ
         audioEngine.setEQ(deckId, 'low', effects.low);
         audioEngine.setEQ(deckId, 'mid', effects.mid);
         audioEngine.setEQ(deckId, 'high', effects.high);
+
+        if (typeof mixerManager?.applyEqProfile === 'function') {
+            mixerManager.applyEqProfile(deckId, effects);
+        }
 
         // עדכון UI
         this.updateChakraUI(chakraId);

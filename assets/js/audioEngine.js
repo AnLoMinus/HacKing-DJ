@@ -157,6 +157,11 @@ class AudioEngine {
         deck.playbackRate = this.getPlaybackRate(deckId);
         deck.source.playbackRate.value = deck.playbackRate;
 
+        // לופ מובנה
+        deck.source.loop = deck.loop.enabled;
+        deck.source.loopStart = deck.loop.start || 0;
+        deck.source.loopEnd = deck.loop.end || deck.buffer.duration;
+
         // חיבור ל-Gain Node
         deck.source.connect(deck.gainNode);
 
@@ -169,11 +174,17 @@ class AudioEngine {
 
         // טיפול בסיום
         deck.source.onended = () => {
-            if (!deck.loop.enabled) {
+            if (deck.loop.enabled) {
                 deck.isPlaying = false;
-                deck.position = 0;
-                deck.startOffset = 0;
+                deck.position = deck.loop.start;
+                deck.startOffset = deck.loop.start;
+                this.play(deckId);
+                return;
             }
+
+            deck.isPlaying = false;
+            deck.position = 0;
+            deck.startOffset = 0;
         };
         
         // עדכון position בזמן אמת
@@ -348,6 +359,28 @@ class AudioEngine {
     }
 
     /**
+     * עצירת דק ואיפוס מלא
+     */
+    stop(deckId) {
+        const deck = this.decks[deckId];
+        if (!deck) return;
+
+        if (deck.source) {
+            try {
+                deck.source.stop();
+            } catch (e) {
+                console.warn('Stop called on already stopped source');
+            }
+            deck.source.disconnect();
+        }
+
+        deck.source = null;
+        deck.isPlaying = false;
+        deck.position = 0;
+        deck.startOffset = 0;
+    }
+
+    /**
      * הגדרת ווליום
      */
     setVolume(deckId, value) {
@@ -364,6 +397,61 @@ class AudioEngine {
         const deck = this.decks[deckId];
         deck.pitchPercent = Number(value) || 0;
         this.applyPlaybackRate(deckId);
+    }
+
+    /**
+     * הפעלה/ביטול לופ סביב המיקום הנוכחי
+     */
+    toggleLoop(deckId, lengthSeconds = 8) {
+        const deck = this.decks[deckId];
+        if (!deck || !deck.buffer) return;
+
+        if (deck.loop.enabled) {
+            deck.loop = { enabled: false, start: 0, end: 0 };
+            if (deck.source) {
+                deck.source.loop = false;
+            }
+            return;
+        }
+
+        const currentPosition = deck.position || 0;
+        const start = Math.max(currentPosition - (lengthSeconds / 2), 0);
+        const end = Math.min(start + lengthSeconds, deck.buffer.duration);
+
+        deck.loop = { enabled: true, start, end };
+
+        if (deck.isPlaying) {
+            this.stop(deckId);
+            deck.position = start;
+            deck.startOffset = start;
+            this.play(deckId);
+        }
+    }
+
+    /**
+     * נאג׳ עדין בתוך הטראק
+     */
+    nudge(deckId, offsetSeconds) {
+        const deck = this.decks[deckId];
+        if (!deck || !deck.buffer) return;
+
+        const wasPlaying = deck.isPlaying;
+        const newPosition = Math.min(Math.max(deck.position + offsetSeconds, 0), deck.buffer.duration);
+
+        this.pause(deckId);
+        deck.position = newPosition;
+        deck.startOffset = newPosition;
+
+        if (wasPlaying) {
+            this.play(deckId);
+        }
+
+        this.updateProgressUI(deckId);
+        const waveformCanvas = document.getElementById(`waveform-${deckId.toLowerCase()}`);
+        if (waveformCanvas && deck.buffer) {
+            const ctx = waveformCanvas.getContext('2d');
+            deckManager.drawProgressOnWaveform(deckId, waveformCanvas, ctx, deck.buffer);
+        }
     }
 
     /**
