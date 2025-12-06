@@ -156,29 +156,87 @@
             <!-- Mixer -->
             <section class="mixer" id="mixer">
                 <div class="mixer-header">
-                    <h2 data-i18n="mixer.title">🎚️ Mixer</h2>
-                </div>
-                <div class="crossfader-container">
-                    <label data-i18n="mixer.crossfader">Crossfader</label>
-                    <input type="range" class="slider crossfader" id="crossfader" min="0" max="100" value="50">
-                </div>
-                <div class="eq-container">
-                    <div class="eq-band">
-                        <label data-i18n="mixer.low">Low</label>
-                        <input type="range" class="slider eq-slider" id="eq-low-a" min="-12" max="12" value="0">
-                    </div>
-                    <div class="eq-band">
-                        <label data-i18n="mixer.mid">Mid</label>
-                        <input type="range" class="slider eq-slider" id="eq-mid-a" min="-12" max="12" value="0">
-                    </div>
-                    <div class="eq-band">
-                        <label data-i18n="mixer.high">High</label>
-                        <input type="range" class="slider eq-slider" id="eq-high-a" min="-12" max="12" value="0">
+                    <div>
+                        <h2 data-i18n="mixer.title">🎚️ Mixer</h2>
+                        <p class="mixer-subtitle" data-i18n="mixer.subtitle">Precision blend & tone control between both decks.</p>
                     </div>
                 </div>
-                <div class="master-volume">
-                    <label data-i18n="mixer.masterVolume">Master Volume</label>
-                    <input type="range" class="slider master-slider" id="master-volume" min="0" max="100" value="80">
+
+                <div class="mixer-grid">
+                    <div class="mixer-card crossfader-card">
+                        <div class="crossfader-labels">
+                            <label data-i18n="mixer.crossfader">Crossfader</label>
+                            <span class="crossfader-readout" id="crossfader-readout" data-i18n="mixer.crossfaderCentered">Centered</span>
+                        </div>
+                        <input type="range" class="slider crossfader" id="crossfader" min="0" max="100" value="50">
+                        <div class="crossfader-actions">
+                            <button class="btn ghost" id="crossfader-left" data-i18n="mixer.crossfaderLeft">Bias A</button>
+                            <button class="btn ghost" id="crossfader-center" data-i18n="mixer.crossfaderCenter">Center</button>
+                            <button class="btn ghost" id="crossfader-right" data-i18n="mixer.crossfaderRight">Bias B</button>
+                        </div>
+                    </div>
+
+                    <div class="mixer-card eq-container">
+                        <div class="eq-column">
+                            <div class="eq-header">
+                                <span data-i18n="deck.deckA">Deck A</span>
+                                <button class="btn pill" id="eq-reset-a" data-i18n="mixer.eqReset">Reset EQ</button>
+                            </div>
+                            <div class="eq-band">
+                                <label data-i18n="mixer.low">Low</label>
+                                <input type="range" class="slider eq-slider" id="eq-low-a" min="-12" max="12" value="0">
+                            </div>
+                            <div class="eq-band">
+                                <label data-i18n="mixer.mid">Mid</label>
+                                <input type="range" class="slider eq-slider" id="eq-mid-a" min="-12" max="12" value="0">
+                            </div>
+                            <div class="eq-band">
+                                <label data-i18n="mixer.high">High</label>
+                                <input type="range" class="slider eq-slider" id="eq-high-a" min="-12" max="12" value="0">
+                            </div>
+                        </div>
+                        <div class="eq-column">
+                            <div class="eq-header">
+                                <span data-i18n="deck.deckB">Deck B</span>
+                                <button class="btn pill" id="eq-reset-b" data-i18n="mixer.eqReset">Reset EQ</button>
+                            </div>
+                            <div class="eq-band">
+                                <label data-i18n="mixer.low">Low</label>
+                                <input type="range" class="slider eq-slider" id="eq-low-b" min="-12" max="12" value="0">
+                            </div>
+                            <div class="eq-band">
+                                <label data-i18n="mixer.mid">Mid</label>
+                                <input type="range" class="slider eq-slider" id="eq-mid-b" min="-12" max="12" value="0">
+                            </div>
+                            <div class="eq-band">
+                                <label data-i18n="mixer.high">High</label>
+                                <input type="range" class="slider eq-slider" id="eq-high-b" min="-12" max="12" value="0">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mixer-card meters-card">
+                        <div class="meter-header">
+                            <span data-i18n="mixer.levelMeters">Level meters</span>
+                            <span class="meter-hint" data-i18n="mixer.levelHint">Watch for headroom while blending.</span>
+                        </div>
+                        <div class="meter-row">
+                            <span class="meter-label" data-i18n="deck.deckA">Deck A</span>
+                            <div class="meter-bar" id="meter-bar-a"></div>
+                        </div>
+                        <div class="meter-row">
+                            <span class="meter-label" data-i18n="deck.deckB">Deck B</span>
+                            <div class="meter-bar" id="meter-bar-b"></div>
+                        </div>
+                        <div class="meter-row">
+                            <span class="meter-label" data-i18n="mixer.masterMeter">Master</span>
+                            <div class="meter-bar" id="meter-bar-master"></div>
+                        </div>
+                        <div class="master-volume">
+                            <label data-i18n="mixer.masterVolume">Master Volume</label>
+                            <input type="range" class="slider master-slider" id="master-volume" min="0" max="100" value="80">
+                        </div>
+                    </div>
                 </div>
             </section>
 

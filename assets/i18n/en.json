@@ -17,10 +17,19 @@
   "mixer": {
     "title": "Mixer",
     "crossfader": "Crossfader",
+    "crossfaderCentered": "Centered",
+    "crossfaderLeft": "Bias A",
+    "crossfaderCenter": "Center",
+    "crossfaderRight": "Bias B",
     "low": "Low",
     "mid": "Mid",
     "high": "High",
-    "masterVolume": "Master Volume"
+    "masterVolume": "Master Volume",
+    "subtitle": "Precision blend & tone control between both decks.",
+    "eqReset": "Reset EQ",
+    "levelMeters": "Level meters",
+    "levelHint": "Watch for headroom while blending.",
+    "masterMeter": "Master"
   },
   "playlist": {
     "title": "Playlist",
