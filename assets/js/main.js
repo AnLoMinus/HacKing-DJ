@@ -11,6 +11,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         // אתחול i18n ראשון (לפני הכל)
         await i18n.init();
 
+        // אתחול ערכות נושא
+        themeManager.init();
+
         // אתחול Audio Engine
         await audioEngine.init();
 
