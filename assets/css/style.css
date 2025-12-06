@@ -245,6 +245,25 @@ body {
     justify-content: center;
 }
 
+.deck-actions,
+.deck-nudges {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.deck-actions .btn,
+.deck-nudges .btn {
+    width: 100%;
+    justify-content: center;
+    padding: 10px 16px;
+    text-transform: none;
+    letter-spacing: 0;
+}
+
+
+
 /* Buttons */
 .btn {
     padding: 12px 24px;

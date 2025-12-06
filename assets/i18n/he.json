@@ -12,7 +12,14 @@
     "cue": "Cue",
     "volume": "ווליום",
     "pitch": "Pitch",
-    "bpm": "BPM"
+    "bpm": "BPM",
+    "sync": "סנכרון BPM",
+    "loop": "לופ 8 שניות",
+    "restart": "התחלה מחדש",
+    "stop": "עצירה",
+    "nudgeBack": "⏪ דחיפה -2ש'",
+    "nudgeForward": "דחיפה +2ש' ⏩",
+    "syncError": "אין טראק פעיל בדק השני לסנכרון"
   },
   "mixer": {
     "title": "מיקסר",
@@ -74,7 +81,9 @@
     "effects": "אפקטים",
     "presets": "סטים מוכנים",
     "activate": "הפעל",
-    "comingSoon": "בקרוב..."
+    "comingSoon": "בקרוב...",
+    "targetDeck": "החלה על דק:",
+    "noChakra": "טרם נבחרה צ'אקרה"
   },
   "shortcuts": {
     "title": "⌨️ קיצורי מקלדת",

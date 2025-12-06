@@ -11,7 +11,15 @@
     "pause": "⏸ रोकें",
     "cue": "Cue",
     "volume": "वॉल्यूम",
-    "pitch": "पिच"
+    "pitch": "पिच",
+    "bpm": "BPM",
+    "sync": "BPM सिंक",
+    "loop": "8s लूप",
+    "restart": "फिर से शुरू",
+    "stop": "रोकें",
+    "nudgeBack": "⏪ -2s नज",
+    "nudgeForward": "+2s नज ⏩",
+    "syncError": "दूसरे डेक पर कोई सक्रिय ट्रैक नहीं"
   },
   "mixer": {
     "title": "मिक्सर",
@@ -73,7 +81,9 @@
     "effects": "इफेक्ट्स",
     "presets": "प्रीसेट",
     "activate": "सक्रिय करें",
-    "comingSoon": "जल्द ही..."
+    "comingSoon": "जल्द ही...",
+    "targetDeck": "किस डेक पर लागू करें:",
+    "noChakra": "अभी तक कोई चक्र चयनित नहीं"
   },
   "shortcuts": {
     "title": "⌨️ कीबोर्ड शॉर्टकट",

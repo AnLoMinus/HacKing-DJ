@@ -39,6 +39,41 @@ class DeckManager {
             cueBtn.addEventListener('click', () => audioEngine.cue(deckId));
         }
 
+        // Stop button
+        const stopBtn = document.getElementById(`stop-${deckId.toLowerCase()}`);
+        if (stopBtn) {
+            stopBtn.addEventListener('click', () => this.stopDeck(deckId));
+        }
+
+        // Restart button
+        const restartBtn = document.getElementById(`restart-${deckId.toLowerCase()}`);
+        if (restartBtn) {
+            restartBtn.addEventListener('click', () => this.restartDeck(deckId));
+        }
+
+        // Loop button
+        const loopBtn = document.getElementById(`loop-${deckId.toLowerCase()}`);
+        if (loopBtn) {
+            loopBtn.addEventListener('click', () => this.toggleLoop(deckId));
+        }
+
+        // Sync BPM button
+        const syncBtn = document.getElementById(`sync-${deckId.toLowerCase()}`);
+        if (syncBtn) {
+            syncBtn.addEventListener('click', () => this.syncBpm(deckId));
+        }
+
+        // Nudge buttons
+        const nudgeBackBtn = document.getElementById(`nudge-back-${deckId.toLowerCase()}`);
+        if (nudgeBackBtn) {
+            nudgeBackBtn.addEventListener('click', () => this.nudgeDeck(deckId, -2));
+        }
+
+        const nudgeForwardBtn = document.getElementById(`nudge-forward-${deckId.toLowerCase()}`);
+        if (nudgeForwardBtn) {
+            nudgeForwardBtn.addEventListener('click', () => this.nudgeDeck(deckId, 2));
+        }
+
         // Volume slider
         const volumeSlider = document.getElementById(`volume-${deckId.toLowerCase()}`);
         if (volumeSlider) {
@@ -192,6 +227,73 @@ class DeckManager {
                 playBtn.classList.remove('pulse');
             }
         }
+    }
+
+    /**
+     * עצירת דק ואיפוס מיקום
+     */
+    stopDeck(deckId) {
+        const deck = audioEngine.decks[deckId];
+        if (!deck || !deck.buffer) return;
+
+        audioEngine.stop(deckId);
+        this.updatePlayButton(deckId);
+        audioEngine.updateProgressUI(deckId);
+    }
+
+    /**
+     * התחלה מחדש מנקודת ההתחלה
+     */
+    restartDeck(deckId) {
+        const deck = audioEngine.decks[deckId];
+        if (!deck || !deck.buffer) {
+            alert(i18n.t('playlist.noTrackLoaded', 'אנא טען טראק קודם'));
+            return;
+        }
+
+        const wasPlaying = deck.isPlaying;
+        audioEngine.stop(deckId);
+        if (wasPlaying) {
+            audioEngine.play(deckId);
+        }
+        this.updatePlayButton(deckId);
+    }
+
+    /**
+     * סנכרון BPM עם הדק השני
+     */
+    syncBpm(deckId) {
+        const otherDeckId = deckId === 'A' ? 'B' : 'A';
+        const sourceDeck = audioEngine.decks[otherDeckId];
+        if (!sourceDeck || !sourceDeck.buffer) {
+            alert(i18n.t('deck.syncError', 'אין טראק פעיל בדק השני לסנכרון'));
+            return;
+        }
+
+        const bpmInput = document.getElementById(`bpm-${deckId.toLowerCase()}`);
+        const bpmDisplay = document.getElementById(`bpm-display-${deckId.toLowerCase()}`);
+        const targetBpm = sourceDeck.bpm || sourceDeck.baseBpm || 120;
+
+        audioEngine.decks[deckId].bpm = targetBpm;
+        audioEngine.applyPlaybackRate(deckId);
+
+        if (bpmInput) bpmInput.value = targetBpm.toFixed(1);
+        if (bpmDisplay) bpmDisplay.textContent = `${targetBpm.toFixed(1)} BPM`;
+    }
+
+    /**
+     * הפעלה/ביטול לופ מהיר
+     */
+    toggleLoop(deckId) {
+        audioEngine.toggleLoop(deckId, 8);
+    }
+
+    /**
+     * נאג׳ עדין קדימה/אחורה
+     */
+    nudgeDeck(deckId, seconds) {
+        audioEngine.nudge(deckId, seconds);
+        this.updatePlayButton(deckId);
     }
 
     /**

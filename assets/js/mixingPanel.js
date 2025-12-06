@@ -6,6 +6,8 @@
 class MixingPanel {
     constructor() {
         this.isOpen = false;
+        this.targetDeck = 'A';
+        this.activeChakraLabel = null;
         this.initPanel();
     }
 
@@ -27,8 +29,18 @@ class MixingPanel {
                             <button class="mixing-tab" data-tab="effects" data-i18n="mixing.effects">אפקטים</button>
                             <button class="mixing-tab" data-tab="presets" data-i18n="mixing.presets">סטים מוכנים</button>
                         </div>
-                        
+
                         <div class="mixing-tab-content active" id="tab-chakras">
+                            <div class="chakra-toolbar">
+                                <div class="chakra-target" aria-live="polite">
+                                    <span data-i18n="mixing.targetDeck">Apply to deck:</span>
+                                    <div class="chakra-target-buttons">
+                                        <button class="btn pill ghost chakra-target-btn active" data-target-deck="A" data-i18n="deck.deckA">Deck A</button>
+                                        <button class="btn pill ghost chakra-target-btn" data-target-deck="B" data-i18n="deck.deckB">Deck B</button>
+                                    </div>
+                                </div>
+                                <div class="chakra-active" id="chakra-active-label" data-i18n="mixing.noChakra">No chakra selected yet</div>
+                            </div>
                             <div class="chakras-grid" id="chakras-grid">
                                 <!-- יווצר דינמית -->
                             </div>
@@ -49,12 +61,12 @@ class MixingPanel {
                 </div>
             `;
             document.body.insertAdjacentHTML('beforeend', panelHTML);
-            
+
             // Event listeners
             document.getElementById('mixing-panel-toggle').addEventListener('click', () => {
                 this.togglePanel();
             });
-            
+
             // Tab switching
             document.querySelectorAll('.mixing-tab').forEach(tab => {
                 tab.addEventListener('click', () => {
@@ -62,7 +74,22 @@ class MixingPanel {
                     this.switchTab(tabName);
                 });
             });
-            
+
+            // Chakra target deck buttons
+            document.querySelectorAll('.chakra-target-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const deckId = btn.getAttribute('data-target-deck');
+                    this.setTargetDeck(deckId);
+                });
+            });
+
+            // Language change should refresh chakra names
+            document.addEventListener('languageChanged', () => {
+                this.renderChakras();
+            });
+
+            this.activeChakraLabel = document.getElementById('chakra-active-label');
+
             // יצירת צ'אקרות
             this.renderChakras();
         }
@@ -111,12 +138,12 @@ class MixingPanel {
     renderChakras() {
         const grid = document.getElementById('chakras-grid');
         const chakras = chakraSystem.getAllChakras();
-        
+
         grid.innerHTML = Object.keys(chakras).map(chakraId => {
             const chakra = chakras[chakraId];
             const currentLang = i18n.getCurrentLanguage();
             const chakraName = currentLang === 'he' ? chakra.nameHe : chakra.name;
-            
+
             return `
                 <div class="chakra-item" data-chakra="${chakraId}" style="border-color: ${chakra.color}">
                     <div class="chakra-icon" style="background: ${chakra.color}">
@@ -127,13 +154,22 @@ class MixingPanel {
                         <p class="chakra-frequency">${chakra.frequency} Hz</p>
                         <p class="chakra-element">${chakra.element}</p>
                     </div>
-                    <button class="chakra-activate-btn" onclick="mixingPanel.activateChakra('${chakraId}')" data-i18n="mixing.activate">הפעל</button>
+                    <button class="chakra-activate-btn" data-chakra-id="${chakraId}" data-i18n="mixing.activate">הפעל</button>
                 </div>
             `;
         }).join('');
-        
-        // עדכון תרגומים
+
+        grid.querySelectorAll('.chakra-activate-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const chakraId = btn.getAttribute('data-chakra-id');
+                this.activateChakra(chakraId);
+            });
+        });
+
+        // עדכון תרגומים + מצב UI
         i18n.updatePage();
+        chakraSystem.updateChakraUI(chakraSystem.activeChakra);
+        this.updateActiveLabel(chakraSystem.activeChakra);
     }
 
     /**
@@ -141,10 +177,40 @@ class MixingPanel {
      */
     activateChakra(chakraId) {
         // הפעלה על דק A (ניתן לשנות)
-        chakraSystem.activateChakra(chakraId, 'A');
-        
+        chakraSystem.activateChakra(chakraId, this.targetDeck);
+
         // עדכון UI
         chakraSystem.updateChakraUI(chakraId);
+        this.updateActiveLabel(chakraId);
+    }
+
+    /**
+     * החלפת דק יעד לצ'אקרות
+     */
+    setTargetDeck(deckId) {
+        this.targetDeck = deckId;
+        document.querySelectorAll('.chakra-target-btn').forEach(btn => {
+            btn.classList.toggle('active', btn.getAttribute('data-target-deck') === deckId);
+        });
+        this.updateActiveLabel(chakraSystem.activeChakra);
+    }
+
+    /**
+     * עדכון תווית הצ'אקרה הפעילה
+     */
+    updateActiveLabel(chakraId) {
+        if (!this.activeChakraLabel) return;
+
+        if (!chakraId) {
+            this.activeChakraLabel.textContent = i18n.t('mixing.noChakra', 'No chakra selected yet');
+            return;
+        }
+
+        const chakra = chakraSystem.getChakra(chakraId);
+        const lang = i18n.getCurrentLanguage();
+        const chakraName = lang === 'he' ? chakra.nameHe : chakra.name;
+        const deckLabel = this.targetDeck === 'A' ? i18n.t('deck.deckA', 'Deck A') : i18n.t('deck.deckB', 'Deck B');
+        this.activeChakraLabel.textContent = `${chakraName} • ${deckLabel}`;
     }
 }
 

@@ -12,7 +12,14 @@
     "cue": "Cue",
     "volume": "Volume",
     "pitch": "Pitch",
-    "bpm": "BPM"
+    "bpm": "BPM",
+    "sync": "Sync BPM",
+    "loop": "Loop 8s",
+    "restart": "Restart",
+    "stop": "Stop",
+    "nudgeBack": "⏪ Nudge -2s",
+    "nudgeForward": "Nudge +2s ⏩",
+    "syncError": "No active track on the other deck to sync"
   },
   "mixer": {
     "title": "Mixer",
@@ -74,7 +81,9 @@
     "effects": "Effects",
     "presets": "Presets",
     "activate": "Activate",
-    "comingSoon": "Coming soon..."
+    "comingSoon": "Coming soon...",
+    "targetDeck": "Apply to deck:",
+    "noChakra": "No chakra selected yet"
   },
   "shortcuts": {
     "title": "⌨️ Keyboard Shortcuts",
