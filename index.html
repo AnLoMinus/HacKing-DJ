@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="assets/css/modal.css">
     <link rel="stylesheet" href="assets/css/mixingPanel.css">
     <link rel="stylesheet" href="assets/css/shortcuts.css">
+    <link rel="stylesheet" href="assets/css/themes.css">
 </head>
 
 <body>
@@ -53,6 +54,69 @@
                 </div>
             </div>
         </div>
+
+        <!-- Theme Panel -->
+        <section class="theme-panel" aria-labelledby="theme-panel-title">
+            <div class="theme-panel-header">
+                <div>
+                    <h2 id="theme-panel-title">🎨 ערכות נושא</h2>
+                    <p class="theme-panel-subtitle">התאימו את הסטייל בין ניאון קוסמי ללוחות מוזהבים בהשראת TorahClarity.</p>
+                </div>
+                <button class="btn btn-small" id="theme-restore" type="button">איפוס לניאון המקורי</button>
+            </div>
+            <div class="theme-grid">
+                <article class="theme-card" data-theme-key="cosmic-neon">
+                    <div class="theme-preview cosmic-neon">
+                        <div class="theme-preview-title">Cosmic Neon</div>
+                        <div class="theme-preview-swatches">
+                            <span class="swatch" style="--swatch-color:#00d4ff"></span>
+                            <span class="swatch" style="--swatch-color:#b026ff"></span>
+                            <span class="swatch" style="--swatch-color:#ffd700"></span>
+                            <span class="swatch" style="--swatch-color:#0a0a0f"></span>
+                        </div>
+                    </div>
+                    <div class="theme-card-body">
+                        <h3>ניאון קוסמי</h3>
+                        <p>הניאון המקורי של HacKing-DJ עם רקעים חשמליים וגלואו כחול/סגול.</p>
+                        <button class="btn btn-small apply-theme" data-theme-target="cosmic-neon">החל</button>
+                    </div>
+                </article>
+
+                <article class="theme-card" data-theme-key="torah-clarity">
+                    <div class="theme-preview torah-clarity">
+                        <div class="theme-preview-title">Torah Clarity</div>
+                        <div class="theme-preview-swatches">
+                            <span class="swatch" style="--swatch-color:#f6e7cf"></span>
+                            <span class="swatch" style="--swatch-color:#c38a1f"></span>
+                            <span class="swatch" style="--swatch-color:#2b5f9e"></span>
+                            <span class="swatch" style="--swatch-color:#2b2b2b"></span>
+                        </div>
+                    </div>
+                    <div class="theme-card-body">
+                        <h3>מגילת זהב</h3>
+                        <p>מראה חם של קלף, קישוטי זהב וכחול עמוק בדומה ל-TorahClarity.</p>
+                        <button class="btn btn-small apply-theme" data-theme-target="torah-clarity">החל</button>
+                    </div>
+                </article>
+
+                <article class="theme-card" data-theme-key="midnight-ember">
+                    <div class="theme-preview midnight-ember">
+                        <div class="theme-preview-title">Midnight Ember</div>
+                        <div class="theme-preview-swatches">
+                            <span class="swatch" style="--swatch-color:#0b0c11"></span>
+                            <span class="swatch" style="--swatch-color:#f97316"></span>
+                            <span class="swatch" style="--swatch-color:#22d3ee"></span>
+                            <span class="swatch" style="--swatch-color:#94a3b8"></span>
+                        </div>
+                    </div>
+                    <div class="theme-card-body">
+                        <h3>להבה לילית</h3>
+                        <p>שילוב גחליליות כתומות עם טורקיז מאוזן עבור מצב וייב לילי.</p>
+                        <button class="btn btn-small apply-theme" data-theme-target="midnight-ember">החל</button>
+                    </div>
+                </article>
+            </div>
+        </section>
 
         <!-- Main Content -->
         <main class="main-content">
@@ -243,6 +307,7 @@
     <script src="assets/js/ui.js"></script>
     <script src="assets/js/chakras.js"></script>
     <script src="assets/js/mixingPanel.js"></script>
+    <script src="assets/js/themes.js"></script>
     <script src="assets/js/main.js"></script>
 </body>
 
