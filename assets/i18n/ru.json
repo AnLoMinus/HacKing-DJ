@@ -16,10 +16,19 @@
   "mixer": {
     "title": "Микшер",
     "crossfader": "Кроссфейдер",
+    "crossfaderCentered": "По центру",
+    "crossfaderLeft": "Сдвиг к A",
+    "crossfaderCenter": "Центр",
+    "crossfaderRight": "Сдвиг к B",
     "low": "Низкие",
     "mid": "Средние",
     "high": "Высокие",
-    "masterVolume": "Общая громкость"
+    "masterVolume": "Общая громкость",
+    "subtitle": "Точный контроль баланса и тона между деками.",
+    "eqReset": "Сбросить EQ",
+    "levelMeters": "Измерители уровня",
+    "levelHint": "Следите за запасом по громкости во время микса.",
+    "masterMeter": "Мастер"
   },
   "playlist": {
     "title": "Плейлист",
