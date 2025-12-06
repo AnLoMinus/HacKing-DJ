@@ -2,9 +2,13 @@
 
 **תוכנת DJ מלאה שרצה בדפדפן** - ללא התקנות, עם כל הכלים המקצועיים 🎧⚡
 
+HacKing-DJ מביאה מיקסר דפדפן מלא עם אסתטיקה של "SparKing Ascension" וריבוי שפות. כל מה שצריך זה לפתוח את `index.html` ולשגר סטים אלקטרוניים מהרגע הראשון.
+
 [![GitHub](https://img.shields.io/badge/GitHub-HacKing--DJ-blue?logo=github)](https://github.com/AnLoMinus/HacKing-DJ)
 [![YouTube](https://img.shields.io/badge/YouTube-HacKing--DJ-red?logo=youtube)](https://www.youtube.com/@HacKing-DJ)
 
+
+![HacKing-DJ Badge](assets/img/logo-badge.svg)
 
 <img width="1024" height="1024" alt="Titan DJ Energy Circuit" src="https://github.com/user-attachments/assets/eb8c5e40-1efc-45f3-981c-493bb79694bc" />
 
@@ -22,6 +26,11 @@
 
 **HacKing-DJ** היא תוכנת DJ מתקדמת שרצה ישירות בדפדפן שלך. שני דקים, מיקסר מקצועי, אפקטים, לופים, ויזואליזציה - הכל בטכנולוגיות Web מודרניות.
 
+### ⚡ תיאור קצר ומהיר
+- סטארט חזק: פתיחה מיידית ללא התקנות.
+- חוויית DJ מלאה: שני דקים, מיקסר, BPM/SYNC ותצוגות גל.
+- חזות ניאון: צבעים חשמליים וגרעיני גלו שמבליטים את האפליקציה במסכים חשוכים.
+
 ---
 
 ## 🎛️ תכונות עיקריות
@@ -38,9 +47,10 @@
 
 ## 🚀 התחלה מהירה
 
-1. פתח את `index.html` בדפדפן
-2. טען קבצי אודיו לדקים
-3. התחל למיקס! 🎧
+1. הורד או שחזר את הפרויקט.
+2. פתח את `index.html` בדפדפן (Edge/Chrome/Firefox).
+3. טען קבצי אודיו לדקים, כוון BPM/Volume, והתחל למיקס! 🎧
+4. רוצה לוק ניאון מלא? השתמש בלוגואים שבתיקיית `assets/img` כדי למתג מצגות או שיתופים.
 
 ---
 
@@ -82,6 +92,13 @@ HacKing-DJ/
 - כפתורים ניאון כחול-סגול-זהב
 - Waveform בצבע חשמלי
 - אנימציות קלות וזורמות
+
+### 🖌️ קווים מנחים לעיצוב
+- **טיפוגרפיה**: כותרות עם `var(--font-display)` (Segoe UI/Inter), טקסט גוף עם `var(--font-body)`.
+- **פלטת צבעים**: `#00d4ff` (Neon Blue), `#b026ff` (Neon Purple), `#ffd700` (Neon Gold), `#3af2c5` (Mint Accent), רקע כהה `#0a0a0f`.
+- **משטחי UI**: שימוש ב-`--surface` ו-`--surface-strong` ב-CSS לכרטיסיות ורכיבים עם גבול קל `--card-border` וגלו עדין.
+- **צללים וגלו**: שמרו על עומק עם `--glow-blue`, `--glow-purple`, `--glow-gold` או `--glow-mint` – לא יותר משניים בו-זמנית כדי להימנע מרעש.
+- **סמלים ולוגואים**: השתמשו ב-`assets/img/logo-mark.svg` לאייקון קטן/פאביקון וב-`assets/img/logo-badge.svg` לכותרות או שקופיות.
 
 ---
 

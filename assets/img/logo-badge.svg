@@ -1,0 +1,30 @@
+<svg width="400" height="200" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">HacKing-DJ Badge</title>
+  <desc id="desc">Horizontal badge with spark icon and logotype for HacKing-DJ.</desc>
+  <defs>
+    <linearGradient id="badgeGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00d4ff" />
+      <stop offset="60%" stop-color="#b026ff" />
+      <stop offset="100%" stop-color="#ffd700" />
+    </linearGradient>
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="5" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width="400" height="200" rx="28" fill="#0a0a0f" />
+  <rect x="10" y="10" width="380" height="180" rx="24" stroke="url(#badgeGradient)" stroke-width="4" fill="#050508" />
+  <g transform="translate(38 40)">
+    <circle cx="60" cy="60" r="52" stroke="url(#badgeGradient)" stroke-width="6" fill="none" filter="url(#softGlow)" />
+    <path d="M52 12 L88 64 L70 66 L98 120 L42 82 L60 80 Z" fill="url(#badgeGradient)" filter="url(#softGlow)" />
+    <circle cx="36" cy="46" r="10" fill="#00d4ff" opacity="0.8" />
+    <circle cx="94" cy="108" r="12" fill="#ffd700" opacity="0.85" />
+  </g>
+  <g transform="translate(160 72)" fill="url(#badgeGradient)" filter="url(#softGlow)">
+    <text x="0" y="32" font-family="'Segoe UI', 'Inter', sans-serif" font-size="42" font-weight="700">HacKing-DJ</text>
+    <text x="2" y="70" font-family="'Segoe UI', 'Inter', sans-serif" font-size="20" font-weight="500" fill="#e0e0e0">Electro-Kabbalah Trap Mixer</text>
+  </g>
+</svg>
