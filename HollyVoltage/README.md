@@ -66,6 +66,31 @@ HacKing-DJ אחראי על הדרופ. גליטצ’ים של מערכת קור�
 **העתקה ישירה — תבנית מלאה לרצועות הבאות:**
 
 ```
+
+ Style:
+Holly-Cyber-Trap • Tech-EDM • Matrix Electric • Futuristic Bass 808 bass line • Neon storm energy background
+Deep sub-bass, electric kicks sparks, cyber glitches percussion, wide stereo synths, cosmic pads
+
+Vocal Style: 
+Power rap + melodic tech-hooks • confident tone • energetic breath
+Electric bass and kicks whisper FX • vocoder harmonies • rhythmic titan cyber robotic 
+
+Instrumentation:
+Digital arps, metallic plucks, cyber pads, glitch FX, transformer-hits, laser-snare rolls
+Electric bass growl, deep punch-kick, neon whooshes, reversed-spark risers, electric cello, drums background line
+
+Mood: Holly 
+Power • uprising • system override • lightning confidence
+AnLoMinus super-charged persona • SparKing cosmic electricity
+
+Keywords:
+AnLoMinus, SparKing, HacKing-DJ, Leon Yaakobov, cyber pulse, quantum beat, neon storm, matrix breaker, digital roar, holy voltage, ecosystem flow
+
+BPM: 44~88
+🎛️ Mix Notes: Wide reverb tail, stereo motion, electric crackle layers, multi-stage drops
+```
+
+```
 Style:
 Holly-Cyber-Trap • Tech-EDM • Matrix Electric • Futuristic Bass 
 808 bass line • Neon storm energy background
