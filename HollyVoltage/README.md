@@ -1,5 +1,7 @@
 # ⚡ אלבום: **Holly Voltage Ascension**
 
+<img width="1024" height="1024" alt="Holly Voltage Ascension Tracklist" src="https://github.com/user-attachments/assets/8f477d07-e457-484d-a18c-b83de26d51aa" />
+
 ### (HV — *HollyVoltage*)
 
 📅 **תאריך לועזי:** 09.12.2025
