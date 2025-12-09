@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>DreamFlute — Ambient Sleep Series | HacKing-DJ & AnLoMinus</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="DreamFlute — 8-track ambient sleep series by HacKing-DJ & AnLoMinus. Ethnic flutes, slow strings, soft percussion, sacred calm.">
+  <style>
+    :root {
+      --bg-main: #050811;
+      --bg-card: #0b101e;
+      --accent: #5bd4ff;
+      --accent-soft: #9af5ff;
+      --accent-gold: #ffd178;
+      --text-main: #f4f7ff;
+      --text-muted: #9ba3c7;
+      --border-soft: #1c2340;
+      --shadow-soft: 0 20px 60px rgba(0,0,0,0.6);
+      --radius-xl: 24px;
+      --radius-lg: 18px;
+      --radius-pill: 999px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #14203b 0, #050811 42%, #02040a 100%);
+      color: var(--text-main);
+      line-height: 1.6;
+      padding: 24px;
+    }
+
+    a {
+      color: var(--accent-soft);
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .page {
+      max-width: 1100px;
+      margin: 0 auto 80px auto;
+    }
+
+    .hero {
+      background: radial-gradient(circle at top left, rgba(91,212,255,0.09), rgba(15,23,42,0.9));
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-soft);
+      padding: 32px 28px 28px 28px;
+      border: 1px solid var(--border-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: -120px;
+      background:
+        radial-gradient(circle at 10% -10%, rgba(91,212,255,0.18), transparent 55%),
+        radial-gradient(circle at 90% 120%, rgba(255,209,120,0.15), transparent 55%);
+      opacity: 0.9;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 16px;
+      align-items: center;
+    }
+
+    .pill {
+      padding: 4px 14px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(155,163,199,0.4);
+      font-size: 13px;
+      color: var(--text-muted);
+      background: rgba(4,7,18,0.7);
+      backdrop-filter: blur(12px);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .pill-strong {
+      border-color: rgba(91,212,255,0.7);
+      color: var(--accent-soft);
+    }
+
+    h1 {
+      font-size: clamp(2.3rem, 4vw, 3.0rem);
+      letter-spacing: 0.03em;
+      margin-bottom: 6px;
+    }
+
+    h1 span.highlight {
+      color: var(--accent);
+      text-shadow: 0 0 14px rgba(91,212,255,0.55);
+    }
+
+    .hero-sub {
+      font-size: 1.02rem;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+
+    .meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 12px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .meta-row span {
+      opacity: 0.9;
+    }
+
+    .credits {
+      font-size: 0.9rem;
+      margin-bottom: 14px;
+    }
+
+    .hero-desc {
+      margin-top: 8px;
+      font-size: 0.98rem;
+      color: var(--text-main);
+      max-width: 720px;
+    }
+
+    .section {
+      margin-top: 32px;
+      background: linear-gradient(145deg, rgba(10,16,32,0.96), rgba(5,8,17,0.96));
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-soft);
+      padding: 22px 22px 24px 22px;
+      box-shadow: 0 14px 40px rgba(0,0,0,0.55);
+    }
+
+    .section h2 {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section h3 {
+      font-size: 1.1rem;
+      margin-top: 12px;
+      margin-bottom: 4px;
+      color: var(--accent-soft);
+    }
+
+    .section p {
+      font-size: 0.96rem;
+      color: var(--text-muted);
+    }
+
+    .tracks-table-wrapper {
+      overflow-x: auto;
+      margin-top: 8px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.93rem;
+      margin-top: 4px;
+      min-width: 540px;
+    }
+
+    th, td {
+      padding: 8px 10px;
+      border-bottom: 1px solid rgba(148,163,184,0.3);
+      text-align: left;
+      white-space: nowrap;
+    }
+
+    th {
+      font-weight: 600;
+      color: var(--accent-soft);
+      background: rgba(15,23,42,0.8);
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(10px);
+      z-index: 1;
+    }
+
+    tr:hover td {
+      background: rgba(15,23,42,0.75);
+    }
+
+    .desc-col {
+      white-space: normal;
+    }
+
+    .anthem, .pasuk {
+      text-align: center;
+    }
+
+    .anthem p {
+      font-size: 0.98rem;
+      color: var(--text-main);
+    }
+
+    .anthem-line {
+      margin-bottom: 4px;
+    }
+
+    .pasuk-text {
+      font-size: 1.0rem;
+      color: var(--accent-gold);
+      margin-bottom: 2px;
+    }
+
+    .pasuk-ref {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .footer-note {
+      text-align: center;
+      margin-top: 18px;
+      font-size: 0.86rem;
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 16px;
+      }
+      .hero {
+        padding: 22px 18px 20px 18px;
+      }
+      .section {
+        padding: 18px 16px 20px 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <!-- HERO -->
+    <header class="hero">
+      <div class="hero-inner">
+        <div class="badge-row">
+          <span class="pill pill-strong">🎧 DreamFlute Web (DFw)</span>
+          <span class="pill">🌙 Ambient Sleep Series</span>
+          <span class="pill">🎹 Flutes • Strings • Soft Percussion</span>
+          <span class="pill">🧘 Deep Rest & Meditation</span>
+        </div>
+
+        <h1>DreamFlute — <span class="highlight">Ambient Sleep Series</span></h1>
+        <p class="hero-sub">
+          8 gentle ambient tracks by <strong>HacKing-DJ &amp; AnLoMinus</strong>, blending ethnic flutes,
+          slow strings, soft percussion and sacred calm for deep, restorative sleep.
+        </p>
+
+        <div class="meta-row">
+          <span>📅 Hebrew date: י״ח בכסלו תשפ״ו</span>
+          <span>📅 Gregorian date: 09/12/2025</span>
+          <span>⏰ Time: 04:52</span>
+          <span>🎼 Tracks: 8</span>
+        </div>
+
+        <p class="credits">
+          🔗 Credits:
+          <a href="https://github.com/AnLoMinus" target="_blank" rel="noopener">AnLoMinus GitHub</a> ·
+          <a href="https://github.com/AnLoMinus/HacKing-DJ" target="_blank" rel="noopener">HacKing-DJ Studio</a> ·
+          <a href="https://github.com/AnLoMinus/VideoSpark" target="_blank" rel="noopener">VideoSpark Engine</a>
+        </p>
+
+        <p class="hero-desc">
+          DreamFlute is a focused micro-album: each track is a sound-bed for sleep,
+          inner quiet and breath regulation. Use it for late-night wind-down, gentle meditation,
+          or as a calm background while the mind releases the day.
+        </p>
+      </div>
+    </header>
+
+    <!-- TRACKLIST -->
+    <section class="section" id="tracklist">
+      <h2>📜 Tracklist Overview</h2>
+      <p>
+        A quick overview of all eight tracks in the DreamFlute series, including code, vibe focus and BPM.
+      </p>
+
+      <div class="tracks-table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Track</th>
+              <th>Title</th>
+              <th>Code</th>
+              <th class="desc-col">Focus</th>
+              <th>BPM</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>01</td>
+              <td>Desert Moon Breath</td>
+              <td>DF01</td>
+              <td class="desc-col">Desert-air ambient, soft ney flute, slow strings, sleep entry.</td>
+              <td>45</td>
+            </tr>
+            <tr>
+              <td>02</td>
+              <td>Oasis Dream Ripple</td>
+              <td>DF02</td>
+              <td class="desc-col">Water-inspired calm, bansuri flute, shimmer pads, warm string bed.</td>
+              <td>48</td>
+            </tr>
+            <tr>
+              <td>03</td>
+              <td>Night Sand Whispers</td>
+              <td>DF03</td>
+              <td class="desc-col">Nocturnal desert wind, slow violins, frame-drum echoes, whisper textures.</td>
+              <td>40</td>
+            </tr>
+            <tr>
+              <td>04</td>
+              <td>Flute of the Inner Star</td>
+              <td>DF04</td>
+              <td class="desc-col">Celestial flute, star-field pads, cosmic ascent, deep serenity.</td>
+              <td>42</td>
+            </tr>
+            <tr>
+              <td>05</td>
+              <td>Calm Drums of Dawn</td>
+              <td>DF05</td>
+              <td class="desc-col">Soft dawn percussion, warm cello, dawn pads, grounded calm.</td>
+              <td>46</td>
+            </tr>
+            <tr>
+              <td>06</td>
+              <td>Moonlit River Flow</td>
+              <td>DF06</td>
+              <td class="desc-col">Flowing water ambience, crystal bells, fluid flute lines.</td>
+              <td>44</td>
+            </tr>
+            <tr>
+              <td>07</td>
+              <td>Sacred Rest Vibration</td>
+              <td>DF07</td>
+              <td class="desc-col">Deep drones, sacred whisper pads, micro-chimes, inner rest.</td>
+              <td>40</td>
+            </tr>
+            <tr>
+              <td>08</td>
+              <td>Oud &amp; Wind Serenity</td>
+              <td>DF08</td>
+              <td class="desc-col">Soft oud plucks, wind pads, desert horizon stillness.</td>
+              <td>43</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- DESCRIPTIONS -->
+    <section class="section" id="descriptions">
+      <h2>🎼 Track Descriptions</h2>
+
+      <h3>DF01 — Desert Moon Breath</h3>
+      <p>
+        Desert-air ambient sleep piece built from a broad ethnic orchestra:
+        soft ney flute with long breathy lines and deep reverb, slow-moving strings,
+        gentle darbuka pulses and desert-air pads shaped like night wind over dunes.
+      </p>
+
+      <h3>DF02 — Oasis Dream Ripple</h3>
+      <p>
+        Water-inspired calm with bansuri flute drifting over warm strings, shimmer pads,
+        subtle heartbeat percussion and glassy reflections, like moonlight on an oasis lake.
+      </p>
+
+      <h3>DF03 — Night Sand Whispers</h3>
+      <p>
+        Nocturnal desert soundscape: ethereal violins, low drones, slow frame-drum echoes
+        and wind-like pads with granular sand motion, guiding the mind into quiet and deep rest.
+      </p>
+
+      <h3>DF04 — Flute of the Inner Star</h3>
+      <p>
+        Celestial ambient track built around glowing flute phrases, star-field pads and
+        soft cosmic drones, with minimal pulse percussion for gentle breath anchoring.
+      </p>
+
+      <h3>DF05 — Calm Drums of Dawn</h3>
+      <p>
+        Warm sunrise energy: transparent darbuka heartbeat, low cello warmth, pale-gold dawn pads
+        and brushed cymbals dissolving into long reverbs, perfect for early-morning stillness.
+      </p>
+
+      <h3>DF06 — Moonlit River Flow</h3>
+      <p>
+        Flowing river ambience with airy flute, long-bow strings, crystal bell tones,
+        granular water textures and slow heartbeat pulse designed for deep sleep descent.
+      </p>
+
+      <h3>DF07 — Sacred Rest Vibration</h3>
+      <p>
+        Deep meditative drones, sacred whisper pads, crystal micro-chimes and near-silent heartbeat pulse,
+        all tuned for nervous-system calm and inner sanctuary feeling before sleep.
+      </p>
+
+      <h3>DF08 — Oud &amp; Wind Serenity</h3>
+      <p>
+        Soft oud plucks, wind pads and low cello sustains over a wide desert soundscape, with subtle
+        chime reflections and granular wind motion, guiding the listener into grounded, peaceful stillness.
+      </p>
+    </section>
+
+    <!-- LINKS PLACEHOLDER -->
+    <section class="section" id="links">
+      <h2>🔗 Audio Links (Coming Soon)</h2>
+      <p>
+        When each track is rendered from your music engine (for example via Suno or your own DAW),
+        you can attach direct links here:
+      </p>
+      <ul>
+        <li>DF01 — Desert Moon Breath — <em>link coming soon</em></li>
+        <li>DF02 — Oasis Dream Ripple — <em>link coming soon</em></li>
+        <li>DF03 — Night Sand Whispers — <em>link coming soon</em></li>
+        <li>DF04 — Flute of the Inner Star — <em>link coming soon</em></li>
+        <li>DF05 — Calm Drums of Dawn — <em>link coming soon</em></li>
+        <li>DF06 — Moonlit River Flow — <em>link coming soon</em></li>
+        <li>DF07 — Sacred Rest Vibration — <em>link coming soon</em></li>
+        <li>DF08 — Oud &amp; Wind Serenity — <em>link coming soon</em></li>
+      </ul>
+    </section>
+
+    <!-- ANTHEM -->
+    <section class="section anthem" id="anthem">
+      <h2>🎤 DreamFlute Anthem</h2>
+      <p class="anthem-line">Eight waves of quiet, breathing soft through the night,</p>
+      <p class="anthem-line">Every track clears the noise, turning pressure to light,</p>
+      <p class="anthem-line">DreamFlute holds the darkness, keeps the heartbeat tight,</p>
+      <p class="anthem-line">HacKing-DJ in the silence — lifting souls in the night.</p>
+    </section>
+
+    <!-- PASUK -->
+    <section class="section pasuk" id="blessing">
+      <h2>✨ Blessing</h2>
+      <p class="pasuk-text">"יָבֹא שָׁלוֹם; יָנוּחוּ עַל־מִשְׁכְּבוֹתָם."</p>
+      <p class="pasuk-ref">– פסוק לחיזוק לפני שינה שקטה</p>
+    </section>
+
+    <div class="footer-note">
+      DreamFlute — Calm for the body. Light for the soul.  
+      Crafted with care by AnLoMinus &amp; HacKing-DJ.
+    </div>
+  </main>
+</body>
+</html>
