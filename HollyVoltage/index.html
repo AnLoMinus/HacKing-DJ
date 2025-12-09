@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>HollyVoltage — SparKing Holly-Cyber-Trap Album</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="HollyVoltage — SparKing Holly-Cyber-Trap • Tech-EDM • Matrix Electric album by AnLoMinus (Leon Yaakobov) aka HacKing-DJ." />
+  <style>
+    /* ========== GLOBAL ========== */
+    :root {
+      --bg-main: #020312;
+      --bg-card: rgba(7, 10, 35, 0.9);
+      --bg-card-soft: rgba(10, 14, 50, 0.85);
+      --accent-1: #ffdd55;
+      --accent-2: #4af2ff;
+      --accent-3: #ff4df0;
+      --text-main: #f5f5ff;
+      --text-soft: #a9a9d9;
+      --border-glow: rgba(255, 255, 255, 0.16);
+      --shadow-strong: 0 0 40px rgba(0, 0, 0, 0.8);
+      --radius-xl: 24px;
+      --radius-lg: 18px;
+      --radius-pill: 999px;
+      --transition-fast: 0.22s ease-out;
+      --transition-med: 0.35s ease-out;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text-main);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(255, 221, 85, 0.05), transparent 55%),
+        radial-gradient(circle at 85% 20%, rgba(74, 242, 255, 0.09), transparent 60%),
+        radial-gradient(circle at 20% 80%, rgba(255, 77, 240, 0.09), transparent 60%),
+        radial-gradient(circle at 80% 100%, rgba(255, 255, 255, 0.04), transparent 55%),
+        radial-gradient(circle at 50% 50%, #020312 0, #010109 40%, #000000 100%);
+      background-attachment: fixed;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: var(--accent-2);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-shadow: 0 0 8px rgba(74, 242, 255, 0.8);
+    }
+
+    .page-wrap {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 32px 16px 48px;
+    }
+
+    /* ========== HERO ========== */
+
+    .hero {
+      position: relative;
+      padding: 28px 22px;
+      border-radius: var(--radius-xl);
+      background: radial-gradient(circle at 10% 0%, rgba(255, 221, 85, 0.18), transparent 55%),
+                  radial-gradient(circle at 90% 10%, rgba(74, 242, 255, 0.18), transparent 55%),
+                  linear-gradient(145deg, rgba(5, 5, 25, 0.98), rgba(6, 10, 40, 0.98));
+      box-shadow:
+        0 0 30px rgba(0, 0, 0, 0.9),
+        0 0 40px rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(240px, 2.2fr);
+      gap: 20px;
+      overflow: hidden;
+    }
+
+    @media (max-width: 840px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+        padding: 22px 18px;
+      }
+    }
+
+    .hero-orbit {
+      position: absolute;
+      inset: -40%;
+      pointer-events: none;
+      opacity: 0.6;
+      background:
+        radial-gradient(circle at 20% 15%, rgba(255, 221, 85, 0.12), transparent 60%),
+        radial-gradient(circle at 80% 25%, rgba(74, 242, 255, 0.15), transparent 60%),
+        conic-gradient(from 210deg, rgba(255, 77, 240, 0.35), transparent, rgba(255, 221, 85, 0.3), transparent);
+      mix-blend-mode: screen;
+      filter: blur(1px);
+    }
+
+    .hero-left {
+      position: relative;
+      z-index: 1;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 12px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: linear-gradient(90deg, rgba(0, 0, 0, 0.2), rgba(10, 20, 60, 0.7));
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+      font-size: 12px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-soft);
+    }
+
+    .eyebrow span.pulse-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: radial-gradient(circle, var(--accent-2), transparent 70%);
+      box-shadow: 0 0 10px rgba(74, 242, 255, 0.9);
+    }
+
+    .hero-title {
+      margin-top: 14px;
+      font-size: clamp(28px, 4vw, 40px);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-shadow:
+        0 0 16px rgba(0, 0, 0, 0.7),
+        0 0 20px rgba(255, 255, 255, 0.12);
+    }
+
+    .hero-title span.hv {
+      color: var(--accent-1);
+      text-shadow:
+        0 0 12px rgba(255, 221, 85, 0.7),
+        0 0 24px rgba(255, 221, 85, 0.5);
+    }
+
+    .hero-subtitle {
+      margin-top: 6px;
+      font-size: 14px;
+      color: var(--text-soft);
+    }
+
+    .hero-tags {
+      margin-top: 14px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag-chip {
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(0, 0, 0, 0.4);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-soft);
+    }
+
+    .hero-cta {
+      margin-top: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .btn-main,
+    .btn-ghost {
+      position: relative;
+      padding: 10px 18px;
+      border-radius: var(--radius-pill);
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border: 1px solid transparent;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+    }
+
+    .btn-main {
+      background: radial-gradient(circle at 0 0, var(--accent-1), var(--accent-3));
+      color: #150b08;
+      box-shadow:
+        0 0 18px rgba(255, 221, 85, 0.9),
+        0 0 30px rgba(255, 77, 240, 0.6);
+    }
+
+    .btn-main:hover {
+      transform: translateY(-1px) scale(1.01);
+      box-shadow:
+        0 0 22px rgba(255, 221, 85, 1),
+        0 0 40px rgba(255, 77, 240, 0.8);
+    }
+
+    .btn-ghost {
+      background: rgba(10, 14, 50, 0.7);
+      border-color: rgba(255, 255, 255, 0.25);
+      color: var(--text-main);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(24, 30, 80, 0.95);
+      box-shadow: 0 0 16px rgba(74, 242, 255, 0.6);
+    }
+
+    .hero-meta {
+      margin-top: 18px;
+      font-size: 11px;
+      color: var(--text-soft);
+      opacity: 0.9;
+    }
+
+    .hero-meta strong {
+      color: var(--accent-2);
+    }
+
+    /* ========== HERO RIGHT ========== */
+
+    .hero-right {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+    }
+
+    .album-card {
+      position: relative;
+      width: 100%;
+      max-width: 320px;
+      aspect-ratio: 4 / 5;
+      border-radius: 26px;
+      background:
+        radial-gradient(circle at 10% 0%, rgba(255, 221, 85, 0.25), transparent 55%),
+        radial-gradient(circle at 85% 20%, rgba(74, 242, 255, 0.25), transparent 55%),
+        radial-gradient(circle at 50% 100%, rgba(255, 77, 240, 0.3), transparent 55%),
+        radial-gradient(circle at 50% 50%, #050515, #02020b);
+      box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.95),
+        0 0 40px rgba(74, 242, 255, 0.4),
+        0 0 60px rgba(255, 77, 240, 0.32);
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      overflow: hidden;
+      padding: 18px 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transform: translateY(0);
+      transition: transform var(--transition-med), box-shadow var(--transition-med);
+    }
+
+    .album-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.22), transparent 65%);
+      mix-blend-mode: soft-light;
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    .album-card:hover {
+      transform: translateY(-4px);
+      box-shadow:
+        0 24px 60px rgba(0, 0, 0, 1),
+        0 0 60px rgba(74, 242, 255, 0.6),
+        0 0 90px rgba(255, 77, 240, 0.5);
+    }
+
+    .album-top-label {
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent-1);
+      text-align: center;
+      margin-bottom: 8px;
+    }
+
+    .album-main-title {
+      text-align: center;
+      font-size: 20px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .album-main-hv {
+      font-size: 46px;
+      font-weight: 800;
+      letter-spacing: 0.3em;
+      text-indent: 0.3em;
+      text-align: center;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+      background: linear-gradient(120deg, var(--accent-1), #ffffff, var(--accent-3));
+      -webkit-background-clip: text;
+      color: transparent;
+      text-shadow:
+        0 0 16px rgba(255, 221, 85, 0.8),
+        0 0 26px rgba(255, 77, 240, 0.8);
+    }
+
+    .album-subline {
+      text-align: center;
+      font-size: 11px;
+      color: var(--text-soft);
+      text-transform: uppercase;
+      letter-spacing: 0.19em;
+    }
+
+    .album-energy-ring {
+      position: relative;
+      margin: 20px auto 16px;
+      width: 180px;
+      aspect-ratio: 1/1;
+      border-radius: 999px;
+      background:
+        conic-gradient(from 215deg, rgba(255, 221, 85, 0.1), rgba(74, 242, 255, 0.5), rgba(255, 77, 240, 0.55), rgba(255, 221, 85, 0.1));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow:
+        0 0 40px rgba(74, 242, 255, 0.8),
+        0 0 60px rgba(255, 77, 240, 0.7);
+      overflow: hidden;
+    }
+
+    .album-energy-core {
+      width: 70%;
+      height: 70%;
+      border-radius: inherit;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(255, 255, 255, 0.4), transparent 60%),
+        radial-gradient(circle at 80% 100%, rgba(255, 77, 240, 0.5), transparent 60%),
+        radial-gradient(circle at 50% 50%, #040410, #010106);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--accent-2);
+      text-align: center;
+      padding: 6px;
+    }
+
+    .album-bottom-meta {
+      font-size: 10px;
+      text-align: center;
+      color: var(--text-soft);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
+
+    /* ========== SECTION WRAPPER ========== */
+
+    .section {
+      margin-top: 28px;
+      padding: 18px 18px 20px;
+      border-radius: var(--radius-xl);
+      background: var(--bg-card);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: var(--shadow-strong);
+      backdrop-filter: blur(16px);
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-size: 18px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+    }
+
+    .section-pill {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      padding: 3px 10px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      color: var(--text-soft);
+    }
+
+    /* ========== TRACKLIST ========== */
+
+    .track-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .track-card {
+      position: relative;
+      padding: 12px 11px;
+      border-radius: var(--radius-lg);
+      background: var(--bg-card-soft);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.7);
+      cursor: pointer;
+      overflow: hidden;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast), background var(--transition-fast);
+    }
+
+    .track-card::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background: radial-gradient(circle at 0 0, rgba(255, 221, 85, 0.12), transparent 55%);
+      opacity: 0;
+      transition: opacity var(--transition-fast);
+      pointer-events: none;
+    }
+
+    .track-card.active::before {
+      opacity: 1;
+    }
+
+    .track-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(255, 255, 255, 0.35);
+      background: radial-gradient(circle at 0 0, rgba(255, 221, 85, 0.09), transparent 60%),
+                  var(--bg-card-soft);
+      box-shadow:
+        0 16px 32px rgba(0, 0, 0, 0.95),
+        0 0 22px rgba(74, 242, 255, 0.4);
+    }
+
+    .track-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .track-index {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--accent-2);
+    }
+
+    .track-name {
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .track-label {
+      margin-top: 4px;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--text-soft);
+    }
+
+    .track-footer {
+      margin-top: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .track-tags {
+      font-size: 10px;
+      color: var(--text-soft);
+      opacity: 0.9;
+    }
+
+    .track-bpm {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--accent-1);
+    }
+
+    /* ========== INFO / PROMPT SECTION ========== */
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.1fr);
+      gap: 16px;
+      margin-top: 10px;
+    }
+
+    @media (max-width: 900px) {
+      .info-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .info-block {
+      padding: 12px 12px 14px;
+      border-radius: 16px;
+      background: rgba(3, 5, 20, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+    }
+
+    .info-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--accent-2);
+      margin-bottom: 4px;
+    }
+
+    .info-text {
+      font-size: 13px;
+      color: var(--text-soft);
+    }
+
+    .code-block {
+      margin-top: 8px;
+      padding: 10px;
+      border-radius: 12px;
+      background: #050611;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      font-family: "SF Mono", ui-monospace, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 12px;
+      color: #f3f3ff;
+      white-space: pre-wrap;
+      word-break: break-word;
+      max-height: 280px;
+      overflow: auto;
+    }
+
+    /* ========== FOOTER ========== */
+
+    footer {
+      margin-top: 26px;
+      font-size: 11px;
+      color: var(--text-soft);
+      text-align: center;
+      padding-bottom: 4px;
+    }
+
+    .footer-row {
+      margin-bottom: 6px;
+    }
+
+    .footer-credits span {
+      display: inline-block;
+      margin: 0 4px;
+    }
+
+    .hebrew-line {
+      margin-top: 8px;
+      font-size: 12px;
+      color: var(--accent-1);
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrap">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-orbit"></div>
+
+      <div class="hero-left">
+        <div class="eyebrow">
+          <span class="pulse-dot"></span>
+          <span>Holly-Cyber-Trap • Matrix Electric • Tech-EDM</span>
+        </div>
+
+        <h1 class="hero-title">
+          <span class="hv">HollyVoltage</span> — SparKing Album
+        </h1>
+
+        <p class="hero-subtitle">
+          Futuristic bass • holy voltage • matrix breaker energy.  
+          AnLoMinus (Leon Yaakobov) as <strong>HacKing-DJ</strong> in full SparKing mode.
+        </p>
+
+        <div class="hero-tags">
+          <div class="tag-chip">AnLoMinus</div>
+          <div class="tag-chip">SparKing</div>
+          <div class="tag-chip">HacKing-DJ</div>
+          <div class="tag-chip">Holly-Cyber-Trap</div>
+          <div class="tag-chip">Matrix Electric</div>
+          <div class="tag-chip">Quantum Beat</div>
+        </div>
+
+        <div class="hero-cta">
+          <a href="#tracks" class="btn-main">
+            🔊 Enter Voltage
+          </a>
+          <a href="#prompt" class="btn-ghost">
+            💾 Copy Prompt Template
+          </a>
+        </div>
+
+        <div class="hero-meta">
+          <div>Album Code: <strong>HV • HollyVoltage</strong></div>
+          <div>BPM Range: <strong>44–88</strong> • Mood: Holly Power • System Override • Lightning Confidence</div>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <article class="album-card">
+          <div>
+            <div class="album-top-label">SparKing Ascension Series</div>
+            <div class="album-main-title">HollyVoltage</div>
+            <div class="album-main-hv">HV</div>
+            <div class="album-subline">Holy-Cyber-Trap • Matrix Electric</div>
+          </div>
+
+          <div class="album-energy-ring">
+            <div class="album-energy-core">
+              Neon storm heart •  
+              digital roar •  
+              holy voltage pulse
+            </div>
+          </div>
+
+          <div class="album-bottom-meta">
+            AnLoMinus • Leon Yaakobov • HacKing-DJ • SparKing Universe
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- TRACKLIST -->
+    <section class="section" id="tracks">
+      <div class="section-header">
+        <h2 class="section-title">🎵 Tracklist — Voltage Gates</h2>
+        <div class="section-pill">10 tracks • HV01–HV10</div>
+      </div>
+
+      <div class="track-grid" id="trackGrid">
+        <!-- HV01 -->
+        <article class="track-card" data-track="HV01 — Matrix Holy Voltage">
+          <div class="track-head">
+            <div class="track-index">HV01</div>
+            <div class="track-name">Matrix Holy Voltage</div>
+          </div>
+          <div class="track-label">Neon 808 • Holy system shock • glitch halos</div>
+          <div class="track-footer">
+            <div class="track-tags">cyber pulse • holy voltage • digital roar</div>
+            <div class="track-bpm">bpm: 72</div>
+          </div>
+        </article>
+
+        <!-- HV02 -->
+        <article class="track-card" data-track="HV02 — CyberSpark Rebirth">
+          <div class="track-head">
+            <div class="track-index">HV02</div>
+            <div class="track-name">CyberSpark Rebirth</div>
+          </div>
+          <div class="track-label">Rebooted spirit • vocoder wings • trap ascent</div>
+          <div class="track-footer">
+            <div class="track-tags">rebirth • vocoder • neon storm</div>
+            <div class="track-bpm">bpm: 68</div>
+          </div>
+        </article>
+
+        <!-- HV03 -->
+        <article class="track-card" data-track="HV03 — Neon Trinity Pulse">
+          <div class="track-head">
+            <div class="track-index">HV03</div>
+            <div class="track-name">Neon Trinity Pulse</div>
+          </div>
+          <div class="track-label">Angel pads • triple synth lead • wide stereo glow</div>
+          <div class="track-footer">
+            <div class="track-tags">cosmic pads • tri-layer hook</div>
+            <div class="track-bpm">bpm: 64</div>
+          </div>
+        </article>
+
+        <!-- HV04 -->
+        <article class="track-card" data-track="HV04 — Quantum Lion Ascend">
+          <div class="track-head">
+            <div class="track-index">HV04</div>
+            <div class="track-name">Quantum Lion Ascend</div>
+          </div>
+          <div class="track-label">Electric cello line • lion-heart sub • royal glitch</div>
+          <div class="track-footer">
+            <div class="track-tags">Leon Yaakobov • lion mode</div>
+            <div class="track-bpm">bpm: 80</div>
+          </div>
+        </article>
+
+        <!-- HV05 -->
+        <article class="track-card" data-track="HV05 — Digital Storm Anointing">
+          <div class="track-head">
+            <div class="track-index">HV05</div>
+            <div class="track-name">Digital Storm Anointing</div>
+          </div>
+          <div class="track-label">Storm FX • blessing drops • matrix rain hats</div>
+          <div class="track-footer">
+            <div class="track-tags">holy voltage • storm field</div>
+            <div class="track-bpm">bpm: 56</div>
+          </div>
+        </article>
+
+        <!-- HV06 -->
+        <article class="track-card" data-track="HV06 — SparKing Halo Override">
+          <div class="track-head">
+            <div class="track-index">HV06</div>
+            <div class="track-name">SparKing Halo Override</div>
+          </div>
+          <div class="track-label">Crowned 808 • lightning halo • override chant</div>
+          <div class="track-footer">
+            <div class="track-tags">SparKing • system override</div>
+            <div class="track-bpm">bpm: 74</div>
+          </div>
+        </article>
+
+        <!-- HV07 -->
+        <article class="track-card" data-track="HV07 — Holy Trap Protocol">
+          <div class="track-head">
+            <div class="track-index">HV07</div>
+            <div class="track-name">Holy Trap Protocol</div>
+          </div>
+          <div class="track-label">Tech-hook script • titan breaths • protocol chants</div>
+          <div class="track-footer">
+            <div class="track-tags">trap code • titan flow</div>
+            <div class="track-bpm">bpm: 66</div>
+          </div>
+        </article>
+
+        <!-- HV08 -->
+        <article class="track-card" data-track="HV08 — AnLoMinus Divine Circuit">
+          <div class="track-head">
+            <div class="track-index">HV08</div>
+            <div class="track-name">AnLoMinus Divine Circuit</div>
+          </div>
+          <div class="track-label">Signature roar • circuit choir • glitch halos</div>
+          <div class="track-footer">
+            <div class="track-tags">AnLoMinus • divine circuit</div>
+            <div class="track-bpm">bpm: 78</div>
+          </div>
+        </article>
+
+        <!-- HV09 -->
+        <article class="track-card" data-track="HV09 — HackTheMatrix Ritual">
+          <div class="track-head">
+            <div class="track-index">HV09</div>
+            <div class="track-name">HackTheMatrix Ritual</div>
+          </div>
+          <div class="track-label">Console beeps • ritual drums • glitch incantations</div>
+          <div class="track-footer">
+            <div class="track-tags">HacKing-DJ • matrix breaker</div>
+            <div class="track-bpm">bpm: 70</div>
+          </div>
+        </article>
+
+        <!-- HV10 -->
+        <article class="track-card" data-track="HV10 — Voltage of the Kings">
+          <div class="track-head">
+            <div class="track-index">HV10</div>
+            <div class="track-name">Voltage of the Kings</div>
+          </div>
+          <div class="track-label">Final rise • royal bass • eternal spark finale</div>
+          <div class="track-footer">
+            <div class="track-tags">ascension • king mode</div>
+            <div class="track-bpm">bpm: 82</div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- INFO + PROMPT -->
+    <section class="section" id="prompt">
+      <div class="section-header">
+        <h2 class="section-title">🧬 Style • Mood • Prompt Template</h2>
+        <div class="section-pill">Ready for Suno / any AI music tool</div>
+      </div>
+
+      <div class="info-grid">
+        <div class="info-block">
+          <div class="info-label">Album Atmosphere</div>
+          <p class="info-text">
+            <strong>HollyVoltage</strong> is a SparKing Holly-Cyber-Trap album —  
+            Tech-EDM, Matrix Electric, Futuristic Bass.  
+            Deep sub-bass, neon storm energy, cyber glitches and cosmic pads
+            wrap a powerful holy warrior vibe.  
+            Vocals are <strong>power rap + melodic tech-hooks</strong>, confident and uplifted,
+            with titan-style breaths and vocoder harmonies.
+          </p>
+        </div>
+
+        <div class="info-block">
+          <div class="info-label">Keywords & Identity</div>
+          <p class="info-text">
+            <strong>Core identity:</strong> AnLoMinus • SparKing • HacKing-DJ • Leon Yaakobov.  
+            <br />
+            <strong>Key words:</strong> cyber pulse, quantum beat, neon storm, matrix breaker,
+            digital roar, holy voltage, ecosystem flow.  
+            <br />
+            Use them inside your prompts to keep all tracks connected in one universe.
+          </p>
+        </div>
+      </div>
+
+      <div class="info-block" style="margin-top: 14px;">
+        <div class="info-label">Prompt Template — Copy & Adapt</div>
+        <div class="code-block">
+Style:
+Holly-Cyber-Trap • Tech-EDM • Matrix Electric • Futuristic Bass
+808 bass line • neon storm energy background
+deep sub-bass, electric kicks sparks, cyber glitches percussion,
+wide stereo synths, cosmic pads and holy atmos textures
+
+Vocal Style:
+Power rap + melodic tech-hooks, confident and elevated tone,
+energetic breaths, electric bass and kicks whisper FX,
+vocoder harmonies, rhythmic titan cyber robotic phrasing
+
+Instrumentation:
+Digital arps, metallic plucks, cyber pads, glitch FX,
+transformer-hits, laser-snare rolls,
+electric bass growl, deep punch-kick,
+neon whooshes, reversed-spark risers,
+electric cello, drums background line
+
+Mood:
+Holly power, uprising, system override, lightning confidence,
+AnLoMinus super-charged persona, SparKing cosmic electricity
+
+Keywords:
+AnLoMinus, SparKing, HacKing-DJ, Leon Yaakobov,
+cyber pulse, quantum beat, neon storm, matrix breaker,
+digital roar, holy voltage, ecosystem flow
+
+BPM:
+44–88
+
+Mix Notes:
+Wide reverb tail, stereo motion, electric crackle layers,
+multi-stage drops, cosmic width, titan punch
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-row footer-credits">
+        <span>© HollyVoltage • HV • SparKing Universe</span>
+        <span>|</span>
+        <span>Created by AnLoMinus (Leon Yaakobov) as HacKing-DJ</span>
+      </div>
+      <div class="footer-row">
+        Designed as a SparKing-style GitHub Pages layout for the Holly-Cyber-Trap album.
+      </div>
+      <div class="hebrew-line">
+        “שִׁירוּ לַיהוָה שִׁיר חָדָשׁ” (תהילים צ״ו, א׳)
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Simple interactive highlight for selected track
+    const trackCards = document.querySelectorAll(".track-card");
+
+    trackCards.forEach(card => {
+      card.addEventListener("click", () => {
+        trackCards.forEach(c => c.classList.remove("active"));
+        card.classList.add("active");
+
+        const title = card.getAttribute("data-track");
+        console.log("Selected track:", title);
+      });
+    });
+  </script>
+</body>
+</html>
