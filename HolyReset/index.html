@@ -1,21 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="he" dir="rtl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>HolyReset (HR) — Sacred Reboot</title>
-  <meta name="description" content="HolyReset (HR) — a sacred reboot project blending Psalms, sound, light, and holy-cyber aesthetics. Part of HacKing-DJ by Leon Yaakobov." />
+  <title>HolyReset (HR) — איפוס קדוש</title>
+  <meta name="description" content="HolyReset (HR) — פרויקט איפוס קדוש המשלב תהילים, כוונה, אור וסגנון Holy‑Cyber. חלק מ‑HacKing‑DJ מאת לאון יעקובוב." />
 
   <style>
     :root {
       --bg-dark: #070b12;
       --bg-mid: #0e1624;
       --glass: rgba(255,255,255,0.08);
+      --glass-strong: rgba(255,255,255,0.12);
       --glass-border: rgba(255,255,255,0.18);
       --neon-blue: #4fc3ff;
       --neon-gold: #f5c77a;
+      --neon-violet: #a98bff;
       --text-main: #e8edf4;
       --text-soft: #a9b3c7;
+      --shadow: rgba(0,0,0,0.45);
+      --ok: rgba(120, 255, 210, 0.95);
+      --warn: rgba(255, 205, 120, 0.95);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -26,35 +31,158 @@
       color: var(--text-main);
       min-height: 100vh;
       overflow-x: hidden;
+      line-height: 1.65;
     }
 
+    a { color: inherit; }
+
+    /* subtle animated dust */
+    .bg-sparks {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.35;
+      background:
+        radial-gradient(1px 1px at 15% 20%, rgba(255,255,255,0.55), transparent 60%),
+        radial-gradient(1px 1px at 60% 10%, rgba(79,195,255,0.55), transparent 60%),
+        radial-gradient(1px 1px at 80% 60%, rgba(245,199,122,0.55), transparent 60%),
+        radial-gradient(1px 1px at 25% 70%, rgba(169,139,255,0.45), transparent 60%),
+        radial-gradient(1px 1px at 40% 40%, rgba(255,255,255,0.35), transparent 60%);
+      filter: blur(0.2px);
+      animation: drift 10s ease-in-out infinite alternate;
+    }
+
+    @keyframes drift {
+      from { transform: translate3d(0,0,0) scale(1); }
+      to { transform: translate3d(0,-10px,0) scale(1.02); }
+    }
+
+    /* Top nav */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      padding: 1rem 1rem;
+      background: linear-gradient(180deg, rgba(7,11,18,0.9), rgba(7,11,18,0.6));
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .topbar-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .brand-badge {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(79,195,255,0.45), rgba(245,199,122,0.35));
+      border: 1px solid rgba(255,255,255,0.14);
+      box-shadow: 0 10px 30px var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .brand-badge::after {
+      content: "HR";
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      color: rgba(11,15,24,0.9);
+      text-shadow: 0 6px 22px rgba(255,255,255,0.25);
+    }
+
+    .brand-title {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+      line-height: 1.1;
+    }
+
+    .brand-title strong {
+      font-size: 1rem;
+      letter-spacing: 0.01em;
+    }
+
+    .brand-title span {
+      font-size: 0.78rem;
+      color: var(--text-soft);
+    }
+
+    .navlinks {
+      display: flex;
+      gap: 0.7rem;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: flex-end;
+    }
+
+    .chip {
+      padding: 0.55rem 0.95rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.05);
+      text-decoration: none;
+      font-size: 0.85rem;
+      color: var(--text-main);
+      backdrop-filter: blur(10px);
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .chip:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 28px var(--shadow);
+    }
+
+    /* Layout */
     header {
-      min-height: 100vh;
+      min-height: 88vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 4rem 1.5rem;
+      padding: 3.6rem 1.3rem 3rem;
       position: relative;
     }
 
+    .wrap {
+      max-width: 1180px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
     .hero {
-      max-width: 1100px;
       width: 100%;
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 3rem;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 2.2rem;
       align-items: center;
     }
 
     .hero-text h1 {
-      font-size: clamp(2.4rem, 4vw, 3.5rem);
-      font-weight: 700;
-      line-height: 1.15;
-      margin-bottom: 1.2rem;
+      font-size: clamp(2.1rem, 4vw, 3.35rem);
+      font-weight: 800;
+      line-height: 1.12;
+      margin-bottom: 1rem;
     }
 
-    .hero-text h1 span {
-      background: linear-gradient(90deg, var(--neon-blue), var(--neon-gold));
+    .gradient {
+      background: linear-gradient(90deg, var(--neon-blue), var(--neon-violet), var(--neon-gold));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
@@ -62,110 +190,865 @@
     .hero-text p {
       font-size: 1.05rem;
       color: var(--text-soft);
-      line-height: 1.7;
-      max-width: 520px;
-      margin-bottom: 2rem;
+      max-width: 640px;
+      margin-bottom: 1.4rem;
     }
 
     .hero-actions {
       display: flex;
-      gap: 1rem;
+      gap: 0.8rem;
       flex-wrap: wrap;
+      margin-bottom: 1rem;
     }
 
     .btn {
-      padding: 0.75rem 1.4rem;
+      padding: 0.8rem 1.35rem;
       border-radius: 999px;
       border: 1px solid var(--glass-border);
       background: linear-gradient(135deg, rgba(255,255,255,0.14), rgba(255,255,255,0.02));
       color: var(--text-main);
       text-decoration: none;
       backdrop-filter: blur(12px);
-      font-size: 0.9rem;
-      letter-spacing: 0.04em;
-      transition: all 0.25s ease;
+      font-size: 0.92rem;
+      letter-spacing: 0.02em;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
     }
 
     .btn.primary {
       border-color: transparent;
       background: linear-gradient(135deg, var(--neon-blue), var(--neon-gold));
       color: #0b0f18;
-      font-weight: 600;
+      font-weight: 700;
     }
 
     .btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(0,0,0,0.35);
+      box-shadow: 0 12px 34px var(--shadow);
     }
 
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.05);
+      color: rgba(232,237,244,0.95);
+      font-size: 0.82rem;
+      width: fit-content;
+    }
+
+    .pill i {
+      width: 8px;
+      height: 8px;
+      border-radius: 99px;
+      background: linear-gradient(135deg, var(--neon-blue), var(--neon-gold));
+      display: inline-block;
+      box-shadow: 0 0 18px rgba(79,195,255,0.3);
+    }
+
+    /* Right glass “panel” (matches your artwork idea) */
     .glass-panel {
-      background: var(--glass);
-      border: 1px solid var(--glass-border);
-      border-radius: 20px;
-      padding: 2rem;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 24px;
+      padding: 1.6rem;
       backdrop-filter: blur(18px);
-      min-height: 420px;
+      min-height: 430px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 18px 60px rgba(0,0,0,0.35);
+    }
+
+    .glass-panel::before {
+      content: "";
+      position: absolute;
+      inset: -80px;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(79,195,255,0.18), transparent 55%),
+        radial-gradient(circle at 70% 30%, rgba(245,199,122,0.15), transparent 60%),
+        radial-gradient(circle at 40% 80%, rgba(169,139,255,0.14), transparent 60%);
+      filter: blur(0px);
+      opacity: 0.95;
+    }
+
+    .glass-panel-inner {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      height: 100%;
+    }
+
+    .panel-title {
+      font-size: 0.9rem;
+      color: rgba(232,237,244,0.92);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      opacity: 0.85;
+    }
+
+    .panel-box {
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.05);
+      border-radius: 18px;
+      padding: 1rem;
+      min-height: 260px;
+      display: grid;
+      align-content: start;
+      gap: 0.7rem;
+    }
+
+    .panel-box small {
+      color: var(--text-soft);
+    }
+
+    .panel-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.65rem;
+    }
+
+    .panel-item {
       display: flex;
       align-items: center;
-      justify-content: center;
-      position: relative;
+      justify-content: space-between;
+      gap: 0.8rem;
+      padding: 0.75rem 0.85rem;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(0,0,0,0.12);
     }
 
-    .glass-panel::after {
-      content: "TEXT PANEL";
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 0.75rem;
-      letter-spacing: 0.25em;
-      color: rgba(255,255,255,0.25);
+    .panel-item span {
+      color: rgba(232,237,244,0.95);
+      font-size: 0.95rem;
     }
+
+    .mini {
+      font-size: 0.78rem;
+      color: var(--text-soft);
+    }
+
+    main {
+      padding: 1rem 1.3rem 4rem;
+    }
+
+    section {
+      margin: 2.3rem auto;
+    }
+
+    .section-card {
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      border-radius: 22px;
+      padding: 1.6rem;
+      backdrop-filter: blur(16px);
+      box-shadow: 0 16px 55px rgba(0,0,0,0.25);
+    }
+
+    .section-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .section-head h2 {
+      font-size: 1.35rem;
+      letter-spacing: 0.01em;
+    }
+
+    .section-head p {
+      color: var(--text-soft);
+      font-size: 0.95rem;
+      max-width: 640px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    .card {
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(0,0,0,0.12);
+      border-radius: 18px;
+      padding: 1.1rem;
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+      cursor: default;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 50px rgba(0,0,0,0.28);
+    }
+
+    .card h3 {
+      font-size: 1rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .card p {
+      color: var(--text-soft);
+      font-size: 0.9rem;
+    }
+
+    .card .actions {
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      margin-top: 0.9rem;
+    }
+
+    .link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      text-decoration: none;
+      padding: 0.55rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.05);
+      font-size: 0.85rem;
+      backdrop-filter: blur(10px);
+    }
+
+    .link:hover { box-shadow: 0 12px 34px rgba(0,0,0,0.26); }
+
+    .hint {
+      margin-top: 0.9rem;
+      color: rgba(169,179,199,0.95);
+      font-size: 0.9rem;
+      border-top: 1px dashed rgba(255,255,255,0.14);
+      padding-top: 0.9rem;
+    }
+
+    /* Modal viewer */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.62);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      z-index: 100;
+    }
+
+    .modal-backdrop.open { display: flex; }
+
+    .modal {
+      width: min(980px, 96vw);
+      max-height: 86vh;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.16);
+      border-radius: 22px;
+      backdrop-filter: blur(18px);
+      box-shadow: 0 24px 80px rgba(0,0,0,0.55);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.95rem 1rem;
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+      background: rgba(0,0,0,0.12);
+    }
+
+    .modal-header strong { font-size: 0.95rem; }
+
+    .modal-header .close {
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.06);
+      color: var(--text-main);
+      padding: 0.55rem 0.85rem;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    .modal-header .close:hover { box-shadow: 0 12px 34px rgba(0,0,0,0.35); }
+
+    .modal-body {
+      padding: 1rem 1.1rem 1.2rem;
+      overflow: auto;
+    }
+
+    .status {
+      font-size: 0.9rem;
+      color: var(--text-soft);
+      padding: 0.8rem 1rem;
+      border: 1px dashed rgba(255,255,255,0.18);
+      border-radius: 16px;
+      background: rgba(0,0,0,0.12);
+    }
+
+    /* Markdown render basics */
+    .md h1, .md h2, .md h3 { margin: 1.1rem 0 0.5rem; line-height: 1.2; }
+    .md h1 { font-size: 1.5rem; }
+    .md h2 { font-size: 1.25rem; }
+    .md h3 { font-size: 1.05rem; }
+    .md p { margin: 0.55rem 0; color: rgba(232,237,244,0.96); }
+    .md ul { margin: 0.55rem 0 0.55rem 1rem; padding-inline-start: 1.25rem; }
+    .md li { margin: 0.35rem 0; color: rgba(232,237,244,0.95); }
+    .md code { background: rgba(0,0,0,0.25); padding: 0.1rem 0.35rem; border-radius: 10px; border: 1px solid rgba(255,255,255,0.10); }
+    .md pre { background: rgba(0,0,0,0.35); padding: 0.9rem; border-radius: 16px; border: 1px solid rgba(255,255,255,0.10); overflow: auto; }
+    .md blockquote { border-right: 3px solid rgba(245,199,122,0.65); padding: 0.2rem 0.9rem; margin: 0.8rem 0; color: rgba(232,237,244,0.92); background: rgba(255,255,255,0.04); border-radius: 14px; }
+    .md a { color: var(--neon-blue); text-decoration: none; border-bottom: 1px dashed rgba(79,195,255,0.35); }
+    .md a:hover { opacity: 0.9; }
 
     footer {
       padding: 2rem 1.5rem;
       text-align: center;
-      font-size: 0.8rem;
+      font-size: 0.86rem;
       color: var(--text-soft);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      background: rgba(0,0,0,0.08);
     }
 
-    @media (max-width: 900px) {
-      .hero {
-        grid-template-columns: 1fr;
-      }
-      .glass-panel {
-        min-height: 260px;
-      }
+    .footer-links {
+      display: flex;
+      gap: 0.7rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 0.7rem;
+    }
+
+    .footer-links a {
+      padding: 0.45rem 0.8rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.05);
+      text-decoration: none;
+      font-size: 0.85rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 980px) {
+      .hero { grid-template-columns: 1fr; }
+      .glass-panel { min-height: 320px; }
+      .grid { grid-template-columns: 1fr; }
+      .topbar-inner { gap: 0.8rem; }
     }
   </style>
 </head>
 <body>
+  <div class="bg-sparks" aria-hidden="true"></div>
 
-  <header>
-    <section class="hero">
-      <div class="hero-text">
-        <h1><span>HolyReset</span> (HR)<br/>Sacred Reboot Protocol</h1>
-        <p>
-          A holy-cyber journey of reset, repair, and return to inner stability.
-          Ten Psalms, one unified flow — sound, light, and intention.
-          <br/><br/>
-          A sub-project of <strong>HacKing-DJ</strong> by <strong>Leon Yaakobov</strong>.
-        </p>
-        <div class="hero-actions">
-          <a class="btn primary" href="#">Enter the Reset</a>
-          <a class="btn" href="https://github.com/AnLoMinus/HacKing-DJ" target="_blank">View on GitHub</a>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="#top">
+        <div class="brand-badge" aria-hidden="true"></div>
+        <div class="brand-title">
+          <strong>HolyReset (HR)</strong>
+          <span>איפוס קדוש • תהילים • אור • כוונה</span>
         </div>
-      </div>
+      </a>
 
-      <div class="glass-panel">
-        <!-- Reserved for Psalm text, visuals, or video overlay -->
-      </div>
-    </section>
+      <nav class="navlinks" aria-label="ניווט">
+        <a class="chip" href="#docs">מסמכים</a>
+        <a class="chip" href="#gallery">גלריה</a>
+        <a class="chip" href="#prayers">תפילות</a>
+        <a class="chip" href="#journal">יומן</a>
+        <a class="chip" href="https://github.com/AnLoMinus/HacKing-DJ" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+    </div>
+  </div>
+
+  <header id="top">
+    <div class="wrap">
+      <section class="hero">
+        <div class="hero-text">
+          <div class="pill"><i aria-hidden="true"></i> HacKing‑DJ × HolyReset</div>
+          <h1><span class="gradient">HolyReset</span> (HR)<br/>פרוטוקול איפוס קדוש</h1>
+          <p>
+            מסע Holy‑Cyber של ניקוי, תיקון וחזרה ליציבות פנימית — דרך עשרה מזמורי תהילים (תיקון הכללי),
+            כוונה נקייה, אור עדין, וקצב של נשימה.
+            <br/><br/>
+            פרויקט‑בת תחת <strong>HacKing‑DJ</strong> מאת <strong>לאון יעקובוב</strong>.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn primary" href="#docs">🚪 כניסה למסמכים</a>
+            <a class="btn" href="#gallery">🖼️ גלריית פרומפטים</a>
+            <a class="btn" href="#prayers">📜 תפילות</a>
+          </div>
+
+          <div class="hint">
+            ✨ טיפ: אם האתר “ריק” — זה קורה כשהמסמכים עדיין לא קיימים בתיקייה, או ששמות הקבצים שונים.
+            למטה יש <strong>רשימת ברירת‑מחדל</strong> + אפשרות להוסיף <code>docs/manifest.json</code> כדי לטעון הכל אוטומטית.
+          </div>
+        </div>
+
+        <div class="glass-panel" aria-label="לוח צד (UI) בסגנון זכוכית חלבית">
+          <div class="glass-panel-inner">
+            <div class="panel-title">RIGHT PANEL • FROSTED GLASS</div>
+
+            <div class="panel-box">
+              <div class="panel-grid">
+                <div class="panel-item">
+                  <span>🛡️ מטרה</span>
+                  <span class="mini">מגן שקט של יציבות</span>
+                </div>
+                <div class="panel-item">
+                  <span>✨ ויז׳ואל</span>
+                  <span class="mini">אור עדין • גאומטריה קדושה</span>
+                </div>
+                <div class="panel-item">
+                  <span>🎛️ UX</span>
+                  <span class="mini">פתיחת מסמכים במודל שקוף</span>
+                </div>
+                <div class="panel-item">
+                  <span>📌 מצב</span>
+                  <span class="mini">מוכן לקישור לקבצי MD</span>
+                </div>
+              </div>
+              <small>הלוח הזה משקף את רעיון ה‑“Text Panel” מהארט‑וורק: נשמור אותו נקי, בלי טקסט מוטבע, ומציגים תוכן רק במודל.</small>
+            </div>
+
+            <a class="btn" href="#journal">🧾 צפייה ביומן שינויים</a>
+          </div>
+        </div>
+      </section>
+    </div>
   </header>
 
+  <main>
+    <div class="wrap">
+
+      <!-- DOCS -->
+      <section id="docs" class="section-card">
+        <div class="section-head">
+          <div>
+            <h2>📚 מסמכי HolyReset</h2>
+            <p>
+              כאן מוצגים קבצי <strong>Markdown</strong> מתוך המאגר (תיקיית <code>HolyReset/</code> או <code>HolyReset/docs/</code>).
+              לחיצה על “פתח כאן” תציג את המסמך בתוך חלון מודל שקוף למחצה עם סגירה.
+            </p>
+          </div>
+          <a class="btn" href="https://github.com/AnLoMinus/HacKing-DJ" target="_blank" rel="noopener">🔗 המאגר הראשי (HacKing‑DJ)</a>
+        </div>
+
+        <div class="grid" id="docsGrid" aria-live="polite"></div>
+
+        <div class="hint">
+          ✅ כדי לטעון את הרשימה אוטומטית: צור קובץ <code>docs/manifest.json</code> בתוך <strong>HolyReset</strong> (או באותו מקום של ה‑HTML), בפורמט:
+          <br/>
+          <code>[{"title":"שם למסמך","path":"HolyReset/README.md","tag":"קטגוריה"}]</code>
+          <br/>
+          ואז האתר יקרא אותו ויבנה את המסכים לבד.
+        </div>
+      </section>
+
+      <!-- GALLERY -->
+      <section id="gallery" class="section-card">
+        <div class="section-head">
+          <div>
+            <h2>🖼️ גלריית פרומפטים • תהילים (16:9)</h2>
+            <p>
+              סט פרומפטים לסגנון <strong>Holy‑Cyber</strong> (4K, 16:9) — “כוסי”, “שמרני”, “ימיני בל תמוט”.
+              כאן נשמור תיעוד פרומפטים, וריאנטים, ושפה ויזואלית.
+            </p>
+          </div>
+          <a class="btn" href="#" data-open-md="HolyReset/README.md" data-title="README — HolyReset">📌 פתח README כאן</a>
+        </div>
+
+        <div class="grid">
+          <div class="card">
+            <h3>⚡ Variant C — יציבות יד ימין</h3>
+            <p>קרן אור אנכית עדינה מימין לדמות — “עַל יְמִינִי” — בלי להיראות כמו ספוט‑לייט.</p>
+            <div class="actions">
+              <a class="link" href="#" data-open-md="HolyReset/10-psalm-cover-prompts.md" data-title="10 Psalm Cover Prompts (16:9)">פתח מסמך פרומפטים</a>
+              <a class="link" href="#" data-open-md="HolyReset/CHANGES.md" data-title="שינויים / Variants">יומן וריאנטים</a>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>🛡️ ״שָׁמְרֵנוּ״ — מגן שקט</h3>
+            <p>הילה מגינה בגאומטריה קדושה מאחורי הדמות — מינימליסטית, מאוזנת, יוקרתית.</p>
+            <div class="actions">
+              <a class="link" href="#" data-open-md="HolyReset/style-guide.md" data-title="Style Guide — HolyReset">פתח סטייל‑גייד</a>
+              <a class="link" href="#" data-open-md="HolyReset/prompts.md" data-title="Prompts Library">ספריית פרומפטים</a>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>🍷 ״כּוֹסֵנוּ״ — אור כוסי (סמלי)</h3>
+            <p>נוכחות אור “כוסית” ליד בית החזה — לא אובייקט, אלא אור חם ומוכל.</p>
+            <div class="actions">
+              <a class="link" href="#" data-open-md="HolyReset/prayers.md" data-title="תפילות — HolyReset">פתח תפילות</a>
+              <a class="link" href="#" data-open-md="HolyReset/notes.md" data-title="Notes">פתח הערות</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="hint">
+          🧩 אם קובץ מסוים לא נטען — פשוט עדכן את הנתיב (path) בלינק/ב‑manifest כך שיתאים לשם הקובץ האמיתי במאגר.
+        </div>
+      </section>
+
+      <!-- PRAYERS -->
+      <section id="prayers" class="section-card">
+        <div class="section-head">
+          <div>
+            <h2>📜 תפילות לאחר תיקון הכללי</h2>
+            <p>
+              אזור זה מיועד למסמכי תפילה (בלשון רבים, בניקוד, עד 5000 תווים) + הרחבות, כוונות וסדר אמירה.
+              מומלץ לשמור כל תפילה כקובץ <code>.md</code> נפרד.
+            </p>
+          </div>
+          <a class="btn" href="#" data-open-md="HolyReset/prayers/after-tikkun.md" data-title="תפילה לאחר תיקון הכללי (לשון רבים)">✨ פתח תפילה מרכזית</a>
+        </div>
+
+        <div class="grid">
+          <div class="card">
+            <h3>🕯️ תפילה לאחר תיקון הכללי</h3>
+            <p>הגרסה הארוכה (עד 5000 תווים), בלשון רבים, מנוקדת, מסודרת כרונולוגית.</p>
+            <div class="actions">
+              <a class="link" href="#" data-open-md="HolyReset/prayers/after-tikkun.md" data-title="תפילה לאחר תיקון הכללי">פתח כאן</a>
+              <a class="link" href="HolyReset/prayers/after-tikkun.md" target="_blank" rel="noopener">פתח בטאב</a>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>⚡ תפילה קצרה אחר התקון הכללי</h3>
+            <p>הרחבה עד 5000 תווים + לשון רבים + ניקוד.</p>
+            <div class="actions">
+              <a class="link" href="#" data-open-md="HolyReset/prayers/short-after-tikkun.md" data-title="תפילה קצרה — לאחר תיקון הכללי">פתח כאן</a>
+              <a class="link" href="HolyReset/prayers/short-after-tikkun.md" target="_blank" rel="noopener">פתח בטאב</a>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>🧭 סדר אמירה + טיפים</h3>
+            <p>דף “איך משתמשים” — סדר קריאה, התמקדות, נשימה, ושקט לפני ואחרי.</p>
+            <div class="actions">
+              <a class="link" href="#" data-open-md="HolyReset/how-to.md" data-title="How‑To — סדר אמירה">פתח כאן</a>
+              <a class="link" href="HolyReset/how-to.md" target="_blank" rel="noopener">פתח בטאב</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="hint">
+          💡 מומלץ: כל קובץ תפילה לשמור בתיקייה <code>HolyReset/prayers/</code> כדי שהאתר והארגון יהיו נקיים.
+        </div>
+      </section>
+
+      <!-- JOURNAL -->
+      <section id="journal" class="section-card">
+        <div class="section-head">
+          <div>
+            <h2>🧾 יומן אירועים ושינויים</h2>
+            <p>
+              כאן נציג תקציר שינויים של השיחה והפיתוח (מהתחלה עד סוף): וריאנטים, החלטות, קבצים שנוצרו, ושינויים באתר.
+              את הרשימה המלאה נשמור כ‑Markdown כדי שנוכל לעדכן מהר.
+            </p>
+          </div>
+          <a class="btn" href="#" data-open-md="HolyReset/journal.md" data-title="יומן אירועים — HolyReset">פתח יומן מלא</a>
+        </div>
+
+        <div class="grid">
+          <div class="card">
+            <h3>🧠 תקציר שיחה</h3>
+            <p>מסמך המסכם את כל מה שנבנה בשיחה: פרומפטים, תפילות, אתר, עיצוב UX.</p>
+            <div class="actions">
+              <a class="link" href="#" data-open-md="HolyReset/summary.md" data-title="סיכום השיחה">פתח כאן</a>
+              <a class="link" href="HolyReset/summary.md" target="_blank" rel="noopener">פתח בטאב</a>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>🧩 קבצים/מסמכים</h3>
+            <p>רשימת כל מסמכי ה‑MD הקיימים בפרויקט + קישורים מהירים.</p>
+            <div class="actions">
+              <a class="link" href="#" data-open-md="HolyReset/docs-index.md" data-title="מפתח מסמכים">פתח כאן</a>
+              <a class="link" href="HolyReset/docs-index.md" target="_blank" rel="noopener">פתח בטאב</a>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>🛠️ Changelog</h3>
+            <p>שינויים טכניים באתר: מודלים, טעינת MD, סגנון RTL, ועיצוב זכוכית.</p>
+            <div class="actions">
+              <a class="link" href="#" data-open-md="HolyReset/CHANGELOG.md" data-title="CHANGELOG — HolyReset">פתח כאן</a>
+              <a class="link" href="HolyReset/CHANGELOG.md" target="_blank" rel="noopener">פתח בטאב</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="hint">
+          🧷 כדי שהכל יעבוד חלק: דאג שקבצי ה‑MD באמת קיימים בנתיבים הללו. אם לא — שנה את הנתיבים כאן או ב‑manifest.
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Modal -->
+  <div class="modal-backdrop" id="modalBackdrop" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal" role="document">
+      <div class="modal-header">
+        <strong id="modalTitle">מסמך</strong>
+        <button class="close" id="modalClose" type="button">✕ סגירה</button>
+      </div>
+      <div class="modal-body">
+        <div class="status" id="modalStatus">טוען…</div>
+        <div class="md" id="modalContent" hidden></div>
+      </div>
+    </div>
+  </div>
+
   <footer>
-    © 2025 HolyReset (HR) · HacKing-DJ · Leon Yaakobov
+    © 2025 HolyReset (HR) · HacKing‑DJ · לאון יעקובוב
+    <div class="footer-links">
+      <a href="#top">⬆️ למעלה</a>
+      <a href="#docs">📚 מסמכים</a>
+      <a href="#gallery">🖼️ גלריה</a>
+      <a href="#prayers">📜 תפילות</a>
+      <a href="#journal">🧾 יומן</a>
+    </div>
   </footer>
 
+  <script>
+    /**
+     * HolyReset — Lightweight MD viewer (no external libs)
+     * - Loads manifest.json if present
+     * - Falls back to a default list
+     * - Opens documents in a frosted-glass modal
+     */
+
+    const DEFAULT_DOCS = [
+      { title: "README — HolyReset", path: "HolyReset/README.md", tag: "כללי" },
+      { title: "10 Psalm Cover Prompts (16:9)", path: "HolyReset/10-psalm-cover-prompts.md", tag: "פרומפטים" },
+      { title: "Style Guide", path: "HolyReset/style-guide.md", tag: "עיצוב" },
+      { title: "Prompts Library", path: "HolyReset/prompts.md", tag: "פרומפטים" },
+      { title: "תפילה לאחר תיקון הכללי", path: "HolyReset/prayers/after-tikkun.md", tag: "תפילות" },
+      { title: "תפילה קצרה — לאחר תיקון הכללי", path: "HolyReset/prayers/short-after-tikkun.md", tag: "תפילות" },
+      { title: "יומן אירועים", path: "HolyReset/journal.md", tag: "יומן" },
+      { title: "סיכום השיחה", path: "HolyReset/summary.md", tag: "יומן" },
+      { title: "CHANGELOG", path: "HolyReset/CHANGELOG.md", tag: "טכני" },
+    ];
+
+    const manifestCandidates = [
+      "docs/manifest.json",
+      "HolyReset/docs/manifest.json",
+      "HolyReset/manifest.json"
+    ];
+
+    const docsGrid = document.getElementById("docsGrid");
+
+    const modalBackdrop = document.getElementById("modalBackdrop");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalClose = document.getElementById("modalClose");
+    const modalStatus = document.getElementById("modalStatus");
+    const modalContent = document.getElementById("modalContent");
+
+    function escapeHTML(str) {
+      return str
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/\"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    function simpleMarkdownToHTML(md) {
+      // Very small & safe parser (headings, lists, code blocks, inline code, links, blockquotes, paragraphs)
+      const lines = md.replace(/\r\n/g, "\n").split("\n");
+      let html = "";
+      let inCode = false;
+      let inList = false;
+      let inQuote = false;
+
+      const closeList = () => { if (inList) { html += "</ul>"; inList = false; } };
+      const closeQuote = () => { if (inQuote) { html += "</blockquote>"; inQuote = false; } };
+
+      for (let i = 0; i < lines.length; i++) {
+        const raw = lines[i];
+        const line = raw.trimEnd();
+
+        if (line.startsWith("```")) {
+          closeList();
+          closeQuote();
+          inCode = !inCode;
+          html += inCode ? "<pre><code>" : "</code></pre>";
+          continue;
+        }
+
+        if (inCode) {
+          html += escapeHTML(raw) + "\n";
+          continue;
+        }
+
+        // blockquote
+        if (line.startsWith(">")) {
+          closeList();
+          if (!inQuote) { html += "<blockquote>"; inQuote = true; }
+          const quoteText = line.replace(/^>\s?/, "");
+          html += "<p>" + inlineFormat(escapeHTML(quoteText)) + "</p>";
+          continue;
+        } else {
+          closeQuote();
+        }
+
+        // headings
+        if (/^###\s+/.test(line)) {
+          closeList();
+          html += `<h3>${inlineFormat(escapeHTML(line.replace(/^###\s+/, "")))}</h3>`;
+          continue;
+        }
+        if (/^##\s+/.test(line)) {
+          closeList();
+          html += `<h2>${inlineFormat(escapeHTML(line.replace(/^##\s+/, "")))}</h2>`;
+          continue;
+        }
+        if (/^#\s+/.test(line)) {
+          closeList();
+          html += `<h1>${inlineFormat(escapeHTML(line.replace(/^#\s+/, "")))}</h1>`;
+          continue;
+        }
+
+        // lists
+        if (/^[-*]\s+/.test(line)) {
+          if (!inList) { html += "<ul>"; inList = true; }
+          const item = line.replace(/^[-*]\s+/, "");
+          html += `<li>${inlineFormat(escapeHTML(item))}</li>`;
+          continue;
+        } else {
+          closeList();
+        }
+
+        // empty line
+        if (line === "") {
+          html += "";
+          continue;
+        }
+
+        // paragraphs
+        html += `<p>${inlineFormat(escapeHTML(line))}</p>`;
+      }
+
+      closeList();
+      closeQuote();
+      if (inCode) html += "</code></pre>";
+      return html;
+    }
+
+    function inlineFormat(text) {
+      // inline code
+      text = text.replace(/`([^`]+)`/g, (m, p1) => `<code>${p1}</code>`);
+      // links [t](u)
+      text = text.replace(/\[([^\]]+)\]\(([^\)]+)\)/g, (m, t, u) => {
+        const safeUrl = u.startsWith("javascript:") ? "#" : u;
+        const target = safeUrl.startsWith("http") ? " target=\"_blank\" rel=\"noopener\"" : "";
+        return `<a href=\"${safeUrl}\"${target}>${t}</a>`;
+      });
+      // bold **
+      text = text.replace(/\*\*([^*]+)\*\*/g, (m, p1) => `<strong>${p1}</strong>`);
+      // italics *
+      text = text.replace(/\*([^*]+)\*/g, (m, p1) => `<em>${p1}</em>`);
+      return text;
+    }
+
+    function openModal(title, path) {
+      modalTitle.textContent = title || "מסמך";
+      modalStatus.textContent = `טוען: ${path}`;
+      modalStatus.style.display = "block";
+      modalContent.hidden = true;
+      modalContent.innerHTML = "";
+
+      modalBackdrop.classList.add("open");
+      modalBackdrop.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+
+      fetch(path, { cache: "no-store" })
+        .then(r => {
+          if (!r.ok) throw new Error(`HTTP ${r.status}`);
+          return r.text();
+        })
+        .then(md => {
+          modalStatus.style.display = "none";
+          modalContent.hidden = false;
+          modalContent.innerHTML = simpleMarkdownToHTML(md);
+          // if Hebrew content exists, keep RTL
+          modalContent.dir = "rtl";
+        })
+        .catch(() => {
+          modalStatus.innerHTML = `⚠️ לא נמצא הקובץ בנתיב הזה: <code>${path}</code><br/><br/>` +
+            `מה עושים? 1) ודא שהקובץ קיים במאגר, 2) ודא שה‑Pages מפרסם אותו, 3) עדכן את הנתיב בלינק/manifest.`;
+        });
+    }
+
+    function closeModal() {
+      modalBackdrop.classList.remove("open");
+      modalBackdrop.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+    }
+
+    function makeDocCard(doc) {
+      const el = document.createElement("div");
+      el.className = "card";
+      el.innerHTML = `
+        <h3>📄 ${escapeHTML(doc.title)}</h3>
+        <p>${escapeHTML(doc.tag ? ("תגית: " + doc.tag) : "מסמך")}</p>
+        <div class="actions">
+          <a class="link" href="#" data-open-md="${escapeHTML(doc.path)}" data-title="${escapeHTML(doc.title)}">פתח כאן</a>
+          <a class="link" href="${escapeHTML(doc.path)}" target="_blank" rel="noopener">פתח בטאב</a>
+        </div>
+      `;
+      return el;
+    }
+
+    async function loadManifest() {
+      for (const candidate of manifestCandidates) {
+        try {
+          const res = await fetch(candidate, { cache: "no-store" });
+          if (!res.ok) continue;
+          const data = await res.json();
+          if (Array.isArray(data) && data.length) return data;
+        } catch (_) {}
+      }
+      return null;
+    }
+
+    async function renderDocs() {
+      const manifest = await loadManifest();
+      const docs = manifest || DEFAULT_DOCS;
+      docsGrid.innerHTML = "";
+      docs.forEach(d => docsGrid.appendChild(makeDocCard(d)));
+    }
+
+    // Global click handler for open-md
+    document.addEventListener("click", (e) => {
+      const a = e.target.closest("a[data-open-md]");
+      if (!a) return;
+      e.preventDefault();
+      const path = a.getAttribute("data-open-md");
+      const title = a.getAttribute("data-title") || "מסמך";
+      openModal(title, path);
+    });
+
+    // Close handlers
+    modalClose.addEventListener("click", closeModal);
+    modalBackdrop.addEventListener("click", (e) => { if (e.target === modalBackdrop) closeModal(); });
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape" && modalBackdrop.classList.contains("open")) closeModal(); });
+
+    // Init
+    renderDocs();
+  </script>
 </body>
 </html>
