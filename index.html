@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>HacKing-DJ — SparKing Audio Hub</title>
+  <meta name="description" content="HacKing-DJ — תשתית על ל-DJ: מיקסר דפדפן + פרויקטים + מסמכים + פיתוח עתידי." />
+
+  <style>
+    :root{
+      --bg0:#05060b; --bg1:#0a0d18;
+      --glass: rgba(255,255,255,.06);
+      --glass2: rgba(255,255,255,.09);
+      --stroke: rgba(255,255,255,.14);
+      --txt: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.68);
+      --muted2: rgba(255,255,255,.54);
+      --ok: rgba(90,255,190,.95);
+      --warn: rgba(255,210,110,.95);
+      --shadow: 0 18px 70px rgba(0,0,0,.55);
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Arial;
+      color:var(--txt);
+      background:
+        radial-gradient(1100px 700px at 80% 10%, rgba(140,80,255,.22), transparent 60%),
+        radial-gradient(900px 600px at 10% 30%, rgba(0,220,255,.18), transparent 55%),
+        radial-gradient(800px 500px at 60% 90%, rgba(255,170,0,.14), transparent 55%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
+      min-height:100vh;
+      overflow-x:hidden;
+    }
+
+    .wrap{max-width:1200px;margin:0 auto;padding:28px 18px 70px}
+
+    header{
+      display:flex;align-items:center;justify-content:space-between;gap:12px;
+      padding:12px 14px;border:1px solid var(--stroke);
+      background:linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.04));
+      border-radius:18px; box-shadow:var(--shadow);
+      backdrop-filter: blur(14px);
+      position:sticky; top:12px; z-index:20;
+    }
+
+    .brand{display:flex;align-items:center;gap:12px}
+    .logoDot{
+      width:14px;height:14px;border-radius:999px;
+      background:radial-gradient(circle at 30% 30%, #fff, rgba(255,255,255,.2) 28%, rgba(130,90,255,.85) 55%, rgba(0,220,255,.7) 85%);
+      box-shadow: 0 0 18px rgba(140,80,255,.65), 0 0 26px rgba(0,220,255,.35);
+    }
+    .brand h1{margin:0;font-size:15px;letter-spacing:.2px}
+    .brand small{display:block;color:var(--muted2);font-size:12px;margin-top:2px}
+
+    .nav{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+    .btn{
+      border:1px solid var(--stroke);
+      background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+      color:var(--txt);
+      padding:10px 12px;border-radius:14px;
+      cursor:pointer; text-decoration:none;
+      display:inline-flex; align-items:center; gap:8px;
+      transition:transform .12s ease, background .12s ease, border-color .12s ease;
+      user-select:none;
+    }
+    .btn:hover{transform:translateY(-1px);border-color:rgba(255,255,255,.24);background:rgba(255,255,255,.09)}
+    .btn.primary{
+      border-color: rgba(255,255,255,.28);
+      background:linear-gradient(135deg, rgba(140,80,255,.28), rgba(0,220,255,.22), rgba(255,170,0,.14));
+      box-shadow: 0 0 30px rgba(140,80,255,.18);
+    }
+
+    .hero{
+      margin-top:18px;
+      border:1px solid var(--stroke);
+      background:linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
+      border-radius:22px;
+      padding:26px 18px;
+      box-shadow:var(--shadow);
+      backdrop-filter: blur(14px);
+      position:relative;
+      overflow:hidden;
+    }
+    .hero::before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(600px 220px at 70% 10%, rgba(140,80,255,.22), transparent 65%),
+        radial-gradient(480px 240px at 20% 30%, rgba(0,220,255,.16), transparent 60%),
+        radial-gradient(520px 260px at 40% 110%, rgba(255,170,0,.10), transparent 60%);
+      pointer-events:none;
+    }
+    .heroGrid{position:relative;display:grid;grid-template-columns:1.2fr .8fr;gap:16px}
+    @media (max-width: 920px){ .heroGrid{grid-template-columns:1fr} }
+
+    .hero h2{margin:0 0 8px;font-size:28px;letter-spacing:.2px}
+    .hero p{margin:0;color:var(--muted);line-height:1.7}
+    .pillRow{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+    .pill{
+      border:1px solid var(--stroke);
+      background:rgba(0,0,0,.18);
+      padding:8px 10px;border-radius:999px;
+      color:var(--muted);
+      font-size:12px;
+    }
+
+    .card{
+      border:1px solid var(--stroke);
+      background:rgba(0,0,0,.14);
+      border-radius:18px;
+      padding:14px;
+      position:relative;
+    }
+    .stat{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+    .k{color:var(--muted2);font-size:12px}
+    .v{font-size:13px}
+    .glowLine{
+      height:1px;background:linear-gradient(90deg, transparent, rgba(255,255,255,.22), transparent);
+      margin:12px 0;
+    }
+
+    h3{margin:22px 4px 10px;font-size:16px;color:rgba(255,255,255,.88)}
+    .grid{
+      display:grid;grid-template-columns:repeat(3, 1fr);
+      gap:12px;
+    }
+    @media (max-width: 980px){ .grid{grid-template-columns:repeat(2, 1fr)} }
+    @media (max-width: 640px){ .grid{grid-template-columns:1fr} }
+
+    .proj{
+      border:1px solid var(--stroke);
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(0,0,0,.14));
+      border-radius:18px;padding:14px;
+      box-shadow: 0 12px 42px rgba(0,0,0,.34);
+      backdrop-filter: blur(12px);
+      min-height:148px;
+      display:flex;flex-direction:column;gap:10px;
+    }
+    .projTop{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+    .projTitle{margin:0;font-size:15px}
+    .tag{
+      font-size:11px;padding:6px 8px;border-radius:999px;
+      border:1px solid var(--stroke);
+      background:rgba(0,0,0,.18);
+      color:var(--muted);
+      white-space:nowrap;
+    }
+    .proj p{margin:0;color:var(--muted);font-size:13px;line-height:1.55}
+    .projActions{margin-top:auto;display:flex;gap:8px;flex-wrap:wrap}
+
+    /* Modal */
+    .modalBack{
+      position:fixed; inset:0;
+      background: rgba(0,0,0,.62);
+      display:none; align-items:center; justify-content:center;
+      padding:18px; z-index:50;
+    }
+    .modal{
+      width:min(980px, 100%);
+      max-height: min(78vh, 900px);
+      overflow:auto;
+      border:1px solid rgba(255,255,255,.18);
+      background: rgba(10,12,20,.72);
+      border-radius:18px;
+      box-shadow: 0 22px 90px rgba(0,0,0,.72);
+      backdrop-filter: blur(18px);
+    }
+    .modalHead{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:10px;
+      padding:12px 14px;
+      border-bottom:1px solid rgba(255,255,255,.12);
+      position:sticky; top:0;
+      background: rgba(10,12,20,.76);
+      backdrop-filter: blur(18px);
+    }
+    .modalTitle{margin:0;font-size:14px;color:rgba(255,255,255,.9)}
+    .x{
+      border:1px solid rgba(255,255,255,.18);
+      background:rgba(255,255,255,.06);
+      color:rgba(255,255,255,.9);
+      border-radius:12px;
+      padding:8px 10px;
+      cursor:pointer;
+    }
+    .modalBody{padding:14px}
+    pre{
+      margin:0;
+      white-space:pre-wrap;
+      word-break:break-word;
+      color:rgba(255,255,255,.86);
+      line-height:1.7;
+      font-size:13px;
+    }
+
+    footer{
+      margin-top:22px;
+      color:var(--muted2);
+      font-size:12px;
+      text-align:center;
+      opacity:.95;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logoDot" aria-hidden="true"></div>
+        <div>
+          <h1>⚡ HacKing-DJ</h1>
+          <small>SparKing Ascension • Electro-Kabbalah Cosmic Trap</small>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <a class="btn primary" href="./app/">🚀 Launch Mixer</a>
+        <button class="btn" onclick="openDoc('FEATURES.md','📌 FEATURES')">📌 Features</button>
+        <button class="btn" onclick="openDoc('ROADMAP.md','🗺️ Roadmap')">🗺️ Roadmap</button>
+        <button class="btn" onclick="openDoc('CHANGELOG.md','🧾 Changelog')">🧾 Changelog</button>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="heroGrid">
+        <div>
+          <h2>🎛️ Audio Hub שנבנה לנצח — גם מוצר, גם מאגר, גם חמ״ל פיתוח</h2>
+          <p>
+            כאן זה הבית של HacKing-DJ: מצד אחד מיקסר דפדפן מלא, ומצד שני “Hub” לפרויקטים, מסמכים,
+            וספריית רכיבים שנפתח לכל תיקייה עמוד ייעודי משלה.
+          </p>
+
+          <div class="pillRow">
+            <div class="pill">⚡ Browser DJ App</div>
+            <div class="pill">🧩 Project Hub</div>
+            <div class="pill">📚 Docs in Glass-Modal</div>
+            <div class="pill">🛡️ Structure for Future Pages</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="stat">
+            <div>
+              <div class="k">🧠 סטטוס</div>
+              <div class="v">Hub פעיל + אפליקציה ב־/app</div>
+            </div>
+            <div>
+              <div class="k">🗂️ רמת ארגון</div>
+              <div class="v">כרטיסיות + מודאל מסמכים</div>
+            </div>
+          </div>
+          <div class="glowLine"></div>
+          <div class="stat">
+            <div>
+              <div class="k">🧱 עיקרון</div>
+              <div class="v">לכל תיקייה = עמוד ייעודי</div>
+            </div>
+            <div>
+              <div class="k">🔮 יעד</div>
+              <div class="v">פורטלים לכל סדרה</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <h3>🧩 Projects Hub</h3>
+    <div class="grid" id="projects"></div>
+
+    <h3>📚 מסמכים מהירים</h3>
+    <div class="grid">
+      <div class="proj">
+        <div class="projTop">
+          <h4 class="projTitle">📘 Project Docs</h4>
+          <span class="tag">docs/</span>
+        </div>
+        <p>פתיחה מהירה של מסמכים חשובים בתוך מודאל שקוף (ללא יציאה מהאתר).</p>
+        <div class="projActions">
+          <button class="btn" onclick="openDoc('PROJECT_DOCUMENTATION.txt','📘 PROJECT_DOCUMENTATION')">📘 Open</button>
+          <button class="btn" onclick="openDoc('MANIFEST.txt','🧾 MANIFEST')">🧾 Manifest</button>
+        </div>
+      </div>
+
+      <div class="proj">
+        <div class="projTop">
+          <h4 class="projTitle">🛡️ Community & Legal</h4>
+          <span class="tag">root</span>
+        </div>
+        <p>תרומה, קוד התנהגות, אבטחה, רישיון — הכול נגיש דרך מודאל.</p>
+        <div class="projActions">
+          <button class="btn" onclick="openDoc('CONTRIBUTING.md','🤝 CONTRIBUTING')">🤝 Contribute</button>
+          <button class="btn" onclick="openDoc('SECURITY.md','🛡️ SECURITY')">🛡️ Security</button>
+          <button class="btn" onclick="openDoc('LICENSE.md','⚖️ LICENSE')">⚖️ License</button>
+        </div>
+      </div>
+
+      <div class="proj">
+        <div class="projTop">
+          <h4 class="projTitle">👑 Credits</h4>
+          <span class="tag">meta</span>
+        </div>
+        <p>תצוגת קבצי AUTHORS/CONTRIBUTORS + עוגן קרדיטים קבוע.</p>
+        <div class="projActions">
+          <button class="btn" onclick="openDoc('AUTHORS.md','👑 AUTHORS')">👑 Authors</button>
+          <button class="btn" onclick="openDoc('CONTRIBUTORS.md','🧑‍🤝‍🧑 CONTRIBUTORS')">🧑‍🤝‍🧑 Contributors</button>
+          <button class="btn" onclick="openDoc('SPONSORS.md','💎 SPONSORS')">💎 Sponsors</button>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      © 2025 AnLoMinus (Leon Yaakobov) • HacKing-DJ Hub • Updated: 15/12/2025 • כ״ה בכסלו תשפ״ו • 08:46 (Asia/Jerusalem)
+    </footer>
+  </div>
+
+  <!-- Modal -->
+  <div class="modalBack" id="mb" onclick="closeModal(event)">
+    <div class="modal" role="dialog" aria-modal="true">
+      <div class="modalHead">
+        <p class="modalTitle" id="mt">📄 Document</p>
+        <button class="x" onclick="forceClose()">✖</button>
+      </div>
+      <div class="modalBody">
+        <pre id="mc">טוען…</pre>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // 🧩 פרויקטים (לפי תיקיות שנראות בשורש המאגר)
+    // בהמשך: לכל אחד ניצור עמוד ייעודי ב: /projects/<name>/
+    const PROJECTS = [
+      { name:"DreamFlute",   tag:"audio",   desc:"סדרת סאונד/אווירה — שער חלומי.", href:"./DreamFlute/" },
+      { name:"FlowIgnite",   tag:"engine",  desc:"מנוע זרימה: אנרגיה, תנועה, טריגרים.", href:"./FlowIgnite/" },
+      { name:"HollyVoltage", tag:"album",   desc:"Holly-Cyber-Trap • שערי מתח קדוש.", href:"./HollyVoltage/" },
+      { name:"HolyReset",    tag:"hub",     desc:"מערכת ריסט/דוקומנטציה/אתר־תוכן.", href:"./HolyReset/" },
+      { name:"PulseHack",    tag:"growth",  desc:"פולסים של קידום, קהילה, גידול קהל.", href:"./PulseHack/" },
+      { name:"SparkFlow",    tag:"series",  desc:"סדרת SparkFlow — זרימה מיסטית-טכנית.", href:"./SparkFlow/" },
+      { name:"SparkPulse",   tag:"series",  desc:"סדרת SparkPulse — פעימות אסטרטגיות.", href:"./SparkPulse/" },
+    ];
+
+    const rootFiles = [
+      "README.md","FEATURES.md","ROADMAP.md","CHANGELOG.md",
+      "PROJECT_DOCUMENTATION.txt","MANIFEST.txt",
+      "CONTRIBUTING.md","CODE_OF_CONDUCT.md","SECURITY.md","LICENSE.md",
+      "AUTHORS.md","CONTRIBUTORS.md","SPONSORS.md"
+    ];
+
+    function renderProjects(){
+      const el = document.getElementById("projects");
+      el.innerHTML = PROJECTS.map(p => `
+        <div class="proj">
+          <div class="projTop">
+            <h4 class="projTitle">⚡ ${p.name}</h4>
+            <span class="tag">${p.tag}</span>
+          </div>
+          <p>${p.desc}</p>
+          <div class="projActions">
+            <a class="btn primary" href="${p.href}">🌐 Open</a>
+            <a class="btn" href="${p.href}" title="Folder">📁 Folder</a>
+            <button class="btn" onclick="openDoc('README.md','📄 README — ${p.name}')">📄 README</button>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    function openDoc(file, title){
+      // מסמכי ROOT נקראים משורש האתר
+      if(!rootFiles.includes(file)){
+        file = "README.md";
+        title = "📄 README";
+      }
+      document.getElementById("mt").textContent = title || ("📄 " + file);
+      document.getElementById("mc").textContent = "טוען…";
+      document.getElementById("mb").style.display = "flex";
+
+      fetch("./" + file, { cache:"no-store" })
+        .then(r => r.ok ? r.text() : Promise.reject(r.status))
+        .then(txt => { document.getElementById("mc").textContent = txt; })
+        .catch(() => { document.getElementById("mc").textContent = "לא ניתן לטעון את הקובץ כרגע."; });
+    }
+
+    function forceClose(){ document.getElementById("mb").style.display = "none"; }
+    function closeModal(e){ if(e.target.id === "mb") forceClose(); }
+
+    renderProjects();
+    // קיצור: ESC סוגר
+    window.addEventListener("keydown", (e)=>{ if(e.key === "Escape") forceClose(); });
+  </script>
+</body>
+</html>
