@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HolyReset (HR) — Sacred Reboot</title>
+  <meta name="description" content="HolyReset (HR) — a sacred reboot project blending Psalms, sound, light, and holy-cyber aesthetics. Part of HacKing-DJ by Leon Yaakobov." />
+
+  <style>
+    :root {
+      --bg-dark: #070b12;
+      --bg-mid: #0e1624;
+      --glass: rgba(255,255,255,0.08);
+      --glass-border: rgba(255,255,255,0.18);
+      --neon-blue: #4fc3ff;
+      --neon-gold: #f5c77a;
+      --text-main: #e8edf4;
+      --text-soft: #a9b3c7;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", Arial, sans-serif;
+      background: radial-gradient(circle at top, #101a2d, var(--bg-dark));
+      color: var(--text-main);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    header {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4rem 1.5rem;
+      position: relative;
+    }
+
+    .hero {
+      max-width: 1100px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .hero-text h1 {
+      font-size: clamp(2.4rem, 4vw, 3.5rem);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-text h1 span {
+      background: linear-gradient(90deg, var(--neon-blue), var(--neon-gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-text p {
+      font-size: 1.05rem;
+      color: var(--text-soft);
+      line-height: 1.7;
+      max-width: 520px;
+      margin-bottom: 2rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 0.75rem 1.4rem;
+      border-radius: 999px;
+      border: 1px solid var(--glass-border);
+      background: linear-gradient(135deg, rgba(255,255,255,0.14), rgba(255,255,255,0.02));
+      color: var(--text-main);
+      text-decoration: none;
+      backdrop-filter: blur(12px);
+      font-size: 0.9rem;
+      letter-spacing: 0.04em;
+      transition: all 0.25s ease;
+    }
+
+    .btn.primary {
+      border-color: transparent;
+      background: linear-gradient(135deg, var(--neon-blue), var(--neon-gold));
+      color: #0b0f18;
+      font-weight: 600;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.35);
+    }
+
+    .glass-panel {
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      padding: 2rem;
+      backdrop-filter: blur(18px);
+      min-height: 420px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .glass-panel::after {
+      content: "TEXT PANEL";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 0.75rem;
+      letter-spacing: 0.25em;
+      color: rgba(255,255,255,0.25);
+    }
+
+    footer {
+      padding: 2rem 1.5rem;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-soft);
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+      .glass-panel {
+        min-height: 260px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <section class="hero">
+      <div class="hero-text">
+        <h1><span>HolyReset</span> (HR)<br/>Sacred Reboot Protocol</h1>
+        <p>
+          A holy-cyber journey of reset, repair, and return to inner stability.
+          Ten Psalms, one unified flow — sound, light, and intention.
+          <br/><br/>
+          A sub-project of <strong>HacKing-DJ</strong> by <strong>Leon Yaakobov</strong>.
+        </p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#">Enter the Reset</a>
+          <a class="btn" href="https://github.com/AnLoMinus/HacKing-DJ" target="_blank">View on GitHub</a>
+        </div>
+      </div>
+
+      <div class="glass-panel">
+        <!-- Reserved for Psalm text, visuals, or video overlay -->
+      </div>
+    </section>
+  </header>
+
+  <footer>
+    © 2025 HolyReset (HR) · HacKing-DJ · Leon Yaakobov
+  </footer>
+
+</body>
+</html>
