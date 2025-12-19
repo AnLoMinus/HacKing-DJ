@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HacKing-DJ | מיקסר מקצועי</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="wrap">
+    <header class="header">
+      <div class="brand">
+        <div class="logo-dot"></div>
+        <div>
+          <h1>HacKing-DJ — Pro Mixer</h1>
+          <small>מיקסר דפדפן עם EQ, הד, קרוספיידר ודגלי ביטחון למופעים חיים</small>
+        </div>
+      </div>
+      <div class="actions">
+        <button class="btn ghost" id="resetSession">איפוס סשן</button>
+        <a class="btn primary" href="../" aria-label="חזרה לדף הבית">← דף ראשי</a>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div>
+        <p class="eyebrow">מוכן לבמה</p>
+        <h2>מיקסר חכם שמרגיש כמו קונסולה מקצועית</h2>
+        <p class="lede">טען רצועות משלך, שלוט ב-EQ תלת-פס, הפעל הד אקפקטיבי, כוון BPM, ושלוט בקרוספיידר עם חישוב עוצמות מדויק. הכל עובד בדפדפן — ללא התקנות.</p>
+        <div class="hero-badges">
+          <span>Web Audio API</span>
+          <span>מדחס מאסטר</span>
+          <span>Live Transport</span>
+          <span>RTL Ready</span>
+        </div>
+      </div>
+      <div class="hero-panel">
+        <div class="meter" aria-hidden="true">
+          <canvas id="masterMeter" width="560" height="130"></canvas>
+        </div>
+        <div class="master-controls">
+          <label class="slider-label">עוצמת מאסטר
+            <input type="range" id="masterGain" min="0" max="1.4" step="0.01" value="1" />
+          </label>
+          <label class="slider-label">הד חוזר (Send)
+            <input type="range" id="globalDelay" min="0" max="1" step="0.01" value="0.25" />
+          </label>
+          <label class="slider-label">Filter מאסטר
+            <input type="range" id="masterTilt" min="-12" max="12" step="0.1" value="0" />
+          </label>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid">
+      <article class="deck" data-deck="a">
+        <header>
+          <p class="eyebrow">Deck A</p>
+          <h3>צד שמאל</h3>
+        </header>
+        <div class="track-loader">
+          <label class="file">
+            <input type="file" accept="audio/*" data-target="fileA" />
+            <span>טען קובץ</span>
+          </label>
+          <button class="btn" data-demo="a">טעינת דמו</button>
+          <div class="meta" id="metaA">אין קובץ נטען</div>
+        </div>
+        <div class="transport">
+          <button class="btn primary" data-action="play" data-deck="a">Play/Pause</button>
+          <button class="btn ghost" data-action="stop" data-deck="a">עצור</button>
+          <label class="switch">Loop <input type="checkbox" data-prop="loop" data-deck="a" checked /><span></span></label>
+          <label class="slider-label">Pitch (±6%)
+            <input type="range" min="0.94" max="1.06" step="0.001" value="1" data-prop="playbackRate" data-deck="a" />
+          </label>
+        </div>
+        <div class="tone-grid">
+          <label class="slider-label">Bass
+            <input type="range" min="-24" max="12" step="0.1" value="0" data-eq="low" data-deck="a" />
+          </label>
+          <label class="slider-label">Mid
+            <input type="range" min="-24" max="12" step="0.1" value="0" data-eq="mid" data-deck="a" />
+          </label>
+          <label class="slider-label">High
+            <input type="range" min="-24" max="12" step="0.1" value="0" data-eq="high" data-deck="a" />
+          </label>
+          <label class="slider-label">עוצמת דק
+            <input type="range" min="0" max="1.4" step="0.01" value="1" data-prop="gain" data-deck="a" />
+          </label>
+          <label class="slider-label">Send הד
+            <input type="range" min="0" max="1" step="0.01" value="0.4" data-prop="delaySend" data-deck="a" />
+          </label>
+        </div>
+        <div class="wave">
+          <div class="progress" id="progA"></div>
+        </div>
+      </article>
+
+      <article class="deck" data-deck="b">
+        <header>
+          <p class="eyebrow">Deck B</p>
+          <h3>צד ימין</h3>
+        </header>
+        <div class="track-loader">
+          <label class="file">
+            <input type="file" accept="audio/*" data-target="fileB" />
+            <span>טען קובץ</span>
+          </label>
+          <button class="btn" data-demo="b">טעינת דמו</button>
+          <div class="meta" id="metaB">אין קובץ נטען</div>
+        </div>
+        <div class="transport">
+          <button class="btn primary" data-action="play" data-deck="b">Play/Pause</button>
+          <button class="btn ghost" data-action="stop" data-deck="b">עצור</button>
+          <label class="switch">Loop <input type="checkbox" data-prop="loop" data-deck="b" checked /><span></span></label>
+          <label class="slider-label">Pitch (±6%)
+            <input type="range" min="0.94" max="1.06" step="0.001" value="1" data-prop="playbackRate" data-deck="b" />
+          </label>
+        </div>
+        <div class="tone-grid">
+          <label class="slider-label">Bass
+            <input type="range" min="-24" max="12" step="0.1" value="0" data-eq="low" data-deck="b" />
+          </label>
+          <label class="slider-label">Mid
+            <input type="range" min="-24" max="12" step="0.1" value="0" data-eq="mid" data-deck="b" />
+          </label>
+          <label class="slider-label">High
+            <input type="range" min="-24" max="12" step="0.1" value="0" data-eq="high" data-deck="b" />
+          </label>
+          <label class="slider-label">עוצמת דק
+            <input type="range" min="0" max="1.4" step="0.01" value="1" data-prop="gain" data-deck="b" />
+          </label>
+          <label class="slider-label">Send הד
+            <input type="range" min="0" max="1" step="0.01" value="0.4" data-prop="delaySend" data-deck="b" />
+          </label>
+        </div>
+        <div class="wave">
+          <div class="progress" id="progB"></div>
+        </div>
+      </article>
+    </section>
+
+    <section class="xfade">
+      <p class="eyebrow">קרוספיידר</p>
+      <div class="xfade-body">
+        <span>A</span>
+        <input type="range" min="0" max="1" step="0.001" id="crossfader" value="0.5" />
+        <span>B</span>
+      </div>
+      <div class="xfade-help">עקומת אוזן (equal-power) לשמירה על עוצמת מאסטר מאוזנת בזמן מעבר.</div>
+    </section>
+
+    <section class="footer-grid">
+      <div>
+        <h4>ציוד חיוני</h4>
+        <ul>
+          <li>EQ תלת-פס עם חיתוך עד -24dB</li>
+          <li>Delay send עם feedback מבוקר</li>
+          <li>Compressor מאסטר רך להגנה על האוזניים</li>
+          <li>טיימליין חי + Reset מהיר</li>
+        </ul>
+      </div>
+      <div>
+        <h4>טיפים</h4>
+        <p>הדמואים מגיעים מ-Creative Commons. אפשר לטעון כל קובץ אודיו מהמחשב ולהשתמש בקרוספיידר כדי לעבור בין הדקים. ה-EQ עובד אחרי הפיטצ'ינג כך שהצליל נשמר טבעי.</p>
+      </div>
+      <div class="timeline">
+        <div class="time" id="timeA">00:00 / 00:00</div>
+        <div class="time" id="timeB">00:00 / 00:00</div>
+        <div class="bpm">BPM ±: <input type="number" id="bpmNudge" value="0" step="0.5" min="-12" max="12" /> <span>מותאם לשני הדקים</span></div>
+      </div>
+    </section>
+  </div>
+
+  <audio id="audioA" preload="metadata" crossorigin="anonymous"></audio>
+  <audio id="audioB" preload="metadata" crossorigin="anonymous"></audio>
+  <script src="script.js"></script>
+</body>
+</html>
